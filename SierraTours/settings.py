@@ -27,7 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-STATICFILES_DIRS = ['C:/Users/crist/Documents/Proyecto Django/SierraTours/SierraTours/web/static']
+STATICFILES_DIRS = ['C:/Users/Noelt/Documents/GitHub/Projecto-Ibarra/SierraTours/web/static']
 
 
 # Application definition
@@ -56,7 +56,7 @@ ROOT_URLCONF = 'SierraTours.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['C:/Users/crist/Documents/Proyecto Django/SierraTours/SierraTours/web'],
+        'DIRS': ['C:/Users/Noelt/Documents/GitHub/Projecto-Ibarra/SierraTours/web'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
