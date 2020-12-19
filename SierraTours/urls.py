@@ -9,7 +9,7 @@ urlpatterns = [
     path('contacto/', contacto),
     path('creel/', creel),
     path('huapoca/', huapoca),
-    path('index/', index),
+    path('', index),
     path('login/', login),
     path('nosotros/', nosotros),
     path('recowata/', recowata),

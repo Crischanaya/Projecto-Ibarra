@@ -1020,6 +1020,7 @@ textarea{
     background-color: rgba(0, 0, 0, 0.39);
     
 }
+/*
 @-webkit-keyframes left-right {
     0% {
       -webkit-transform: translateY(-20%) translateX(-10%);
@@ -1066,7 +1067,7 @@ textarea{
       -webkit-transform: translateY(-20%) translateX(-10%);
            -o-transform: translateY(-20%) translateX(-10%);
               transform: translateY(-20%) translateX(-10%); } }
-  /* added to the original element calling slippry */
+  /* added to the original element calling slippry 
   .sy-box.sy-loading {
     background: url("/images/sy-loader.gif") 50% 50% no-repeat;
     -webkit-background-size: 32px 32px;
@@ -1075,7 +1076,7 @@ textarea{
     .sy-box.sy-loading .sy-slides-wrap, .sy-box.sy-loading .sy-pager {
       visibility: hidden; }
   
-  /* element that wraps the slides */
+  /* element that wraps the slides 
   .sy-slides-wrap {
     position: relative;
     height: 100%;
@@ -1083,14 +1084,14 @@ textarea{
     .sy-slides-wrap:hover .sy-controls {
       display: block; }
   
-  /* element that crops the visible area to the slides */
+  /* element that crops the visible area to the slides 
   .sy-slides-crop {
     height: 100%;
     width: 100%;
     position: absolute;
     overflow: hidden; }
   
-  /* list containing the slides */
+  /* list containing the slides 
   .sy-list {
     width: 100%;
     height: 100%;
@@ -1107,7 +1108,7 @@ textarea{
            -o-transition: top ease;
               transition: top ease; }
   
-  /* single slide */
+  /* single slide 
   .sy-slide {
     position: absolute;
     width: 100%;
@@ -1153,7 +1154,7 @@ textarea{
         width: 100%;
         border: 0; }
   
-  /* next/ prev buttons, with arrows and clickable area a lot larger than the visible buttons */
+  /* next/ prev buttons, with arrows and clickable area a lot larger than the visible buttons 
   .sy-controls {
     display: none;
     list-style: none;
@@ -1220,7 +1221,7 @@ textarea{
             margin-top: -0.7em;
             margin-left: -0.7em; } }
   
-  /* captions, styled fo the overlay variant */
+  /* captions, styled fo the overlay variant 
   .sy-caption-wrap {
     position: absolute;
     bottom: 2em;
@@ -1280,7 +1281,7 @@ textarea{
         .sy-pager li a:hover, .sy-pager li a:focus {
           opacity: 0.6; }
   
-  /* element to "keep/ fill" the space of the content, gets intrinsic height via js */
+  /* element to "keep/ fill" the space of the content, gets intrinsic height via js 
   .sy-filler {
     width: 100%; }
     .sy-filler.ready {
@@ -1328,3 +1329,4 @@ textarea{
               .galeria input[type=radio]:nth-of-type(4):checked ~ img:nth-of-type(4) {
                 opacity: 1;
               }
+              */
