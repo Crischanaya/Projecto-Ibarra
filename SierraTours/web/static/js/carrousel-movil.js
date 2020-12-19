@@ -1,5 +1,5 @@
-var imagenes = ['img/creel1.jpg','img/creelbaner.jpg','img/huapocabaner.jpg'];
-var direcciones = ['barrancas.html','creel.html','huapoca.html'];
+var imagenes = ['/static/img/creel1.jpg','/static/img/creelbaner.jpg','/static/img/huapocabaner.jpg'];
+var direcciones = ['/barrancas/','/creel/','/huapoca/'];
 cont = 0;
 conturl = 0;
 function carrousel(contenedor){
