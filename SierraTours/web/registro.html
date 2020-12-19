@@ -1,0 +1,136 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="es">
+  
+<head>
+    <meta charset="UTF-8">
+    <title>Sierra Tours</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
+     <link rel="stylesheet" href={% static "/css/styles.css" %}>
+     <link rel="stylesheet" href={% static "/css/normalize.css" %}>
+     <link rel="shortcut icon" href={% static "/img/favicon.ico" %}>
+     <link rel="stylesheet" href={% static "/css/all.min.css"%}>
+</head>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+   $(document).ready(function(){
+$("button.get-name").click(function(){
+    var name = $("Registro exitoso, felicidades" +"#name").val();
+    alert(name);
+});
+   });
+</script>
+<div class="contenido-barra">
+    <a href="/index/">
+    <img class="logo" src={% static "/img/logo.png" %} alt="Logo Sierra Tours">
+    </a>
+    <span class="titulo t-letra2">Sierra Tours</span>
+    <div>
+     <label class="stroke2" style="font-size: 18pt;">Usuario: <span class="stroke" style="font-size: 16pt;">Invitado</span></label>
+    </div>
+</div>
+<body class="fondo">
+    <div class="menu-movil">
+        <a href="#"><i class="fas fa-bars"></i></a>
+     </div>
+<div id="header" >
+<ul class="nav">                    
+    <li><a href="/index/"> Inicio</a></li>
+
+    <li><a>Destinos</a>
+        <ul>
+            <li><a>Madera</a>        
+                <ul>
+                    <li><a href="/huapoca/"> Huapoca</a></li>
+                </ul>
+            </li>
+        
+            <li class="p-creel"><a>Sierra Tarahumara</a>
+                <ul> 
+                    <li><a href="/creel/">Creel</a></li>
+                    <li><a href="/barrancas/">Barrancas del Cobre</a></li>  
+                </ul>  
+            </li>
+    </li>         
+</ul>
+    <li><a href="/registro/">Registrarse</a></li>
+    <li><a href="/login/">Iniciar Sesion</a></li>
+    <li><a href="/nosotros/">Nosotros</a></li>
+    <li><a href="/contacto/">Contacto</a></li>
+</div>
+</div>
+
+<main class="espacio-registro">
+<form class="login-pagina mover-registro">
+        <u> <input  type="text" id="name"class="login-username" autofocus="true" required="true" placeholder="Nombre" /></u> 
+        <u> <input  class="login-username" autofocus="true" required="true" placeholder="Apellidos" /></u>   
+        
+        <select id="city" class="login-username" required>
+            <option value="">Seleccione un estado...</option>
+            <option value="Aguascalientes">Aguascalientes</option>
+            <option value="Baja California">Baja California</option>
+            <option value="Baja California Sur">Baja California Sur</option>
+            <option value="Campeche">Campeche</option>
+            <option value="Chiapas">Chiapas</option>
+            <option value="Chihuahua">Chihuahua</option>
+            <option value="CDMX">Ciudad de México</option>
+            <option value="Coahuila">Coahuila</option>
+            <option value="Colima">Colima</option>
+            <option value="Durango">Durango</option>
+            <option value="Estado de México">Estado de México</option>
+            <option value="Guanajuato">Guanajuato</option>
+            <option value="Guerrero">Guerrero</option>
+            <option value="Hidalgo">Hidalgo</option>
+            <option value="Jalisco">Jalisco</option>
+            <option value="Michoacán">Michoacán</option>
+            <option value="Morelos">Morelos</option>
+            <option value="Nayarit">Nayarit</option>
+            <option value="Nuevo León">Nuevo León</option>
+            <option value="Oaxaca">Oaxaca</option>
+            <option value="Puebla">Puebla</option>
+            <option value="Querétaro">Querétaro</option>
+            <option value="Quintana Roo">Quintana Roo</option>
+            <option value="San Luis Potosí">San Luis Potosí</option>
+            <option value="Sinaloa">Sinaloa</option>
+            <option value="Sonora">Sonora</option>
+            <option value="Tabasco">Tabasco</option>
+            <option value="Tamaulipas">Tamaulipas</option>
+            <option value="Tlaxcala">Tlaxcala</option>
+            <option value="Veracruz">Veracruz</option>
+            <option value="Yucatán">Yucatán</option>
+            <option value="Zacatecas">Zacatecas</option>
+        </select>
+    <u> <input type="email" class="login-username" autofocus="true" required="true" placeholder="Correo electronico" /></u>  
+    <u><input type="password" class="login-password" required="true" placeholder="Contraseña" /></u> 
+    <u><input type="password" class="login-password" required="true" placeholder="Confirmar contraseña" /></u> 
+    <input type="submit"  name="Login" value="Registrarse" class="login-submit" />
+
+    <div class="terminos">
+        <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+        <label for="vehicle1" required>Acepto los terminos y condiciones </label><br>
+        <input type="checkbox" id="vehicle1" name="vehicle2" value="Bike">
+        <label for="vehicle1" required>Recibir ofertas y promociones por correo</label><br>
+    </div>
+</form>
+</main>
+
+<footer class="footer seccion">
+    <div class="contenedor contenedor-footer">
+        <nav class="navegacion">
+            <a href="/index/">Inicio</a>
+            <a href="/registro/">Registrarse</a>
+            <a href="/login/">Iniciar Sesion</a>
+            <a href="/nosotros/">Nosotros</a>
+        </nav>
+        <p class="copyright">Todos los Derechos Reservados 2020 &copy;</p>
+    </div>
+</footer>
+
+<script src={% static "/js/jquery.js" %}></script>
+<script src={% static "/js/animaciones.js" %}></script>
+
+
+</body>
+</html>

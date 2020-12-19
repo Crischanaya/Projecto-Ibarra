@@ -1,0 +1,205 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Sierra Tours</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href={% static "/css/styles.css" %}>
+     <link rel="stylesheet" href={% static "/css/normalize.css" %}>
+     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
+    <link rel="shortcut icon" href={% static "/img/favicon.ico" %} />
+    <link rel="stylesheet" href= {% static "/css/all.min.css" %}>
+</head>
+
+<body>
+    <header class="fondo-cabecera">
+        <div class="cabecera">
+            <div class="contenido-barra">
+                <a href="/index/">
+                <img class="logo" src= {% static "/img/logo.png" %} alt="Logo Sierra Tours">
+                </a>
+                <span class="titulo t-letra2">Sierra Tours</span>
+                <div>
+                 <label class="stroke2" style="font-size: 18pt;">Usuario: <span class="stroke" style="font-size: 16pt;">Invitado</span></label>
+                </div>
+            </div>
+            <div class="menu-movil">
+                <a href="#"><i class="fas fa-bars"></i></a>
+             </div>
+        <div id="header" >
+            <ul class="nav">                    
+                  <li><a href="/index/"> Inicio</a></li>
+
+                <li><a>Destinos</a>
+                    <ul>
+                        <li><a>Madera</a>        
+                            <ul>
+                                <li><a href="/huapoca/"> Huapoca</a></li>
+                            </ul>
+                        </li>
+                    
+                        <li class="p-creel"><a>Sierra Tarahumara</a>
+                            <ul> 
+                                <li><a href="/creel/">Creel</a></li>
+                                <li><a href="/barrancas/">Barrancas del Cobre</a></li>  
+                            </ul>  
+                        </li>
+                </li>         
+        </ul>
+        <li><a href="/registro/">Registrarse</a></li>
+                <li><a href="/login/">Iniciar Sesion</a></li>
+                <li><a href="/nosotros/">Nosotros</a></li>
+                <li><a href="/contacto/">Contacto</a></li>
+        </div>
+    </div>
+ </header>
+
+       <h1 class="centrar-texto tamaño-titulo">Barrancas del Cobre</h1>
+
+        <div class="imagenes" >
+            <img src= {% static "/img/teleferico1.jpg" %}>   
+        </div>
+
+
+         
+<main class="contenedor">
+  
+
+    <div class="informacion">
+        <p class="cuerpo1">
+            En el corazón de la Sierra Tarahumara se encuentran las majestuosas 
+            Barrancas del Cobre, llamadas así por el tono cobrizo de sus paredes. 
+            <br>
+            Las Barrancas te sorprenderán con sus bosques. 
+            Tienen para ti diversas actividades como acampar, 
+            avistar aves o simplemente admirar la contrastante vegetación a lo largo del camino. 
+            Los tonos y las formas siempre cambiantes de la sierra parecen derretirse en el horizonte.
+             <br>
+        </p>
+            <img  src= {% static "/img/barrancas3.jpg" %} width="400" height="300" style="border-radius: 15px;">
+    </div>
+    
+    
+    <div class="actividades">
+        <h2 class="caja">ACTIVIDADES</h2>
+
+         <div class="acomodar">
+             <img style="border-radius: 15px;" src= {% static "/img/barrancasrafting.jpg" %}>
+                 <div class="info-paquete">
+                    <h3> Rafting </h3>
+                            
+                       <ul>
+                        <li>Edades: Máxima 75 años</li> 
+                        <li>Duración: 1 hora y 45 minutos</li> 
+                         <li> Disponibilidad: Diaria</li> 
+                             <li> Horarios: 09:00 am a 03:00 pm</li> 
+                       </ul>                    
+                </div> 
+                
+                <div class="inf-pago">
+                        <h3>Rafting </h3> 
+                         <div class="info-paquete">
+                          <ul>
+                              <li> Desde $ 2,062 MXN </li>
+                              <li> 5 a 6 Horas</li>
+                          </ul>  
+                       </div>
+                        
+                  
+                    <button class="zoom1" style="border-radius: 15px;" onclick="alert('Para agregar este paquete es necesario registrarse e iniciar sesión')">
+                        RESERVAR
+                    </button>
+                    
+                </div>   
+            </div>
+
+
+            <div class="acomodar">
+                <img style="border-radius: 15px;" src= {% static "/img/barrancasrapel.jpg" %} >
+                    <div class="info-paquete">
+                       <h3> Tirolesa</h3>
+                               
+                          <ul>
+                            
+                           <li>Edades: Máxima 75 años</li> 
+                           <li>Duración: 1 hora y 45 minutos</li> 
+                            <li> Disponibilidad: Diaria</li> 
+                                <li> Horarios: 09:00 am a 03:00 pm</li> 
+                          </ul>                    
+                   </div> 
+                   
+                   <div class="inf-pago">
+                           <h3>Tirolesa</h3> 
+                            <div class="info-paquete">
+                             <ul>
+                                 <li> Desde $ 1,500 MXN </li>
+                                 <li> 3 a 4 Horas</li>
+                             </ul>  
+                          </div>
+                           
+                     
+                       <button class="zoom1" style="border-radius: 15px;" onclick="alert('Para agregar este paquete es necesario registrarse e iniciar sesión')">
+                           RESERVAR
+                       </button>
+                       
+                   </div>   
+               </div>
+
+
+
+
+               
+            <div class="acomodar">
+                <img style="border-radius: 15px;" src= {% static "/img/tele.jpg" %}>
+                    <div class="info-paquete">
+                       <h3> Teleferico</h3>
+                          <p>Reserva ahora y paga después</p>      
+                          <ul>
+                               <li> Edades: Todas las edades</li>
+                               <li>Duración: 45 minutos</li>
+                               <li>Horarios: 09:00 am a 04:30 pm</li>
+                          </ul>                    
+                   </div> 
+                   
+                   <div class="inf-pago">
+                           <h3>Teleferico</h3> 
+                            <div class="info-paquete">
+                             <ul>
+                                 <li> Desde $ 750 MXN </li>
+                                 <li> 3 Horas</li>
+                             </ul>  
+                          </div>
+                           
+                     
+                       <button class="zoom1" style="border-radius: 15px;" onclick="alert('Para agregar este paquete es necesario registrarse e iniciar sesión')">
+                           RESERVAR
+                       </button>
+                       
+                   </div>   
+               </div>
+
+    </div>
+
+          
+ </main>     
+
+    <footer class="footer seccion">
+        <div class="contenedor contenedor-footer">
+            <nav class="navegacion">
+                <a href="/index/">Inicio</a>
+                <a href="/registro/">Registrarse</a>
+                <a href="/login/">Iniciar Sesion</a>
+                <a href="/nosotros/">Nosotros</a>
+            </nav>
+            <p class="copyright">Todos los Derechos Reservados 2020 &copy;</p>
+        </div>
+    </footer>
+
+    <script src={% static "/js/jquery.js" %}></script>
+    <script src={% static "/js/animaciones.js" %}></script>
+</body>
+
+</html>

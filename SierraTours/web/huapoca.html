@@ -1,0 +1,200 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Sierra Tours</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href={% static "/css/styles.css" %}>
+     <link rel="stylesheet" href={% static "/css/normalize.css" %}>
+     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
+    <link rel="shortcut icon" href={% static "/img/favicon.ico" %}/>
+    <link rel="stylesheet" href={% static "/css/all.min.css" %}>
+</head>
+
+<body>
+    <header class="fondo-cabecera">
+        <div class="cabecera">
+            <div class="contenido-barra">
+                <a href="/index/">
+                <img class="logo" src={% static "/img/logo.png" %} alt="Logo Sierra Tours">
+                </a>
+                <span class="titulo t-letra2">Sierra Tours</span>
+                <div>
+                 <label class="stroke2" style="font-size: 18pt;">Usuario: <span class="stroke" style="font-size: 16pt;">Invitado</span></label>
+                </div>
+            </div>
+            <div class="menu-movil">
+                <a href="#"><i class="fas fa-bars"></i></a>
+             </div>
+        <div id="header" >
+            <ul class="nav">                    
+                  <li><a href="/index/"> Inicio</a></li>
+
+                <li><a>Destinos</a>
+                    <ul>
+                        <li><a>Madera</a>        
+                            <ul>
+                                <li><a href="/huapoca/"> Huapoca</a></li>
+                            </ul>
+                        </li>
+                    
+                        <li class="p-creel"><a>Sierra Tarahumara</a>
+                            <ul> 
+                                <li><a href="/creel/">Creel</a></li>
+                                <li><a href="/barrancas/">Barrancas del Cobre</a></li>  
+                            </ul>  
+                        </li>
+                </li>         
+        </ul>
+        <li><a href="/registro/">Registrarse</a></li>
+                <li><a href="/login/">Iniciar Sesion</a></li>
+                <li><a href="/nosotros/">Nosotros</a></li>
+                <li><a href="/contacto/">Contacto</a></li>
+        </div>
+    </div>
+ </header>
+
+       <h1 class="centrar-texto tamaño-titulo">Huapoca Madera</h1>
+<div class="imagenes" >
+    <img src={% static "/img/huap1.png" %}>   
+</div>
+ 
+
+        
+<main class="contenedor">
+    <div class="informacion">
+        <p class="cuerpo1">
+            Es un sitio arqueológico ubicado 36 kilómetros al oeste de la ciudad de Madera, siguiendo una carretera de terracería, 
+            en las inmediaciones del Cañón Huápoca, a tres kilómetros del Río Papigochi, en el oeste del estado mexicano de Chihuahua.
+            <br>
+            Cuenta con un manantial de Aguas Termales a la orilla del Río Papigochi, al fondo de la Barranca de Huápoca.
+            <br>
+            Antes de cruzar el puente de Huápoca, un camino desciende hasta a la orilla del río y termina en un manantial 
+            de aguas termales; el líquido brota de una grieta en un conglomerado rocoso a una temperatura muy agradable y 
+            baja directamente al río formado en su curso una pequeña cascada y varias pozas pequeñas. Un amplio arenal junto a 
+            la orilla del río hace más atractivo el sitio.
+            <br>
+            Actualmente el manantial está acondicionado como balneario y cuenta con dos espaciosas albercas y un tobogán.
+        </p>
+            <img  src={% static "/img/huapocabaner2.png" %} width="400" height="300" style="border-radius: 15px;">
+    </div>
+
+
+    <div class="actividades">
+        <h2 class="caja">ACTIVIDADES</h2>
+
+         <div class="acomodar">
+             <img style="border-radius: 15px;" src= {% static "/img/huap4.jpg" %}>
+                 <div class="info-paquete">
+                    <h3> Tour Vehiculos 4x4</h3>
+                       <p></p>      
+                       <ul>                                
+                            <li>Edades: 18+</li>
+                            <li>Duración: 8 Horas</li>
+                            <li>Disponibilidad: Diaria</li>
+                            <li>Horarios: 09:00 am a 09:00 pm</li>
+                       </ul>                    
+                </div> 
+                
+                <div class="inf-pago">
+                        <h3>Tour Vehiculos 4x4</h3> 
+                         <div class="info-paquete">
+                          <ul>
+                              <li> Desde $ 3,000 MXN </li>
+                          </ul>  
+                       </div>
+                        
+                  
+                    <button class="zoom1" style="border-radius: 15px;" onclick="alert('Para agregar este paquete es necesario registrarse e iniciar sesión')">
+                        RESERVAR
+                    </button>
+                    
+                </div>   
+            </div>
+
+
+            <div class="acomodar">
+                <img style="border-radius: 15px;" src={% static "/img/huap3.png" %}>
+                    <div class="info-paquete">
+                       <h3> Tour Cotorra Serrana</h3>
+                          <p></p>      
+                          <ul>
+                               <li>Edades: Cualquiera</li>
+                               <li>Duración: 1 Dia</li>
+                               <li>Disponibilidad: Diaria</li>
+                               <li> Horarios: 09:30 am a 05:40 pm</li>
+                          </ul>                    
+                   </div> 
+                   
+                   <div class="inf-pago">
+                           <h3>Tour Cotorra Serrana</h3> 
+                            <div class="info-paquete">
+                             <ul>
+                                 <li> Desde $ 500 MXN </li>
+                             </ul>  
+                          </div>
+                           
+                     
+                       <button class="zoom1" style="border-radius: 15px;" onclick="alert('Para agregar este paquete es necesario registrarse e iniciar sesión')">
+                           RESERVAR
+                       </button>
+                       
+                   </div>   
+               </div>
+
+
+
+
+ --              
+            <div class="acomodar">
+                <img style="border-radius: 15px;" src={% static "/img/huap2.png" %}>
+                    <div class="info-paquete">
+                       <h3>Toboganes</h3>
+                          <p></p>      
+                          <ul>
+                               <li>Edades: Maxima 80 Años</li>
+                               <li>Duración: 3 Horas</li>
+                               <li> Disponibilidad: Diaria</li>
+                               <li> Horarios: 09:00 am a 09:30 pm</li>
+                          
+                          </ul>                    
+                   </div> 
+                   
+                   <div class="inf-pago">
+                           <h3>Valle De Los Monjes</h3> 
+                            <div class="info-paquete">
+                             <ul>
+                                 <li> Desde $ 250 MXN </li>
+                    
+                             </ul>  
+                          </div>
+                           
+                     
+                       <button class="zoom1" style="border-radius: 15px;" onclick="alert('Para agregar este paquete es necesario registrarse e iniciar sesión')">
+                           RESERVAR
+                       </button>
+                       
+                   </div>   
+               </div>
+
+      </div>        
+ </main>  
+
+    <footer class="footer seccion">
+        <div class="contenedor contenedor-footer">
+            <nav class="navegacion">
+                <a href="/index/">Inicio</a>
+                <a href="/registro/">Registrarse</a>
+                <a href="/login/">Iniciar Sesion</a>
+                <a href="/nosotros/">Nosotros</a>
+            </nav>
+            <p class="copyright">Todos los Derechos Reservados 2020 &copy;</p>
+        </div>
+    </footer>
+    <script src={% static "/js/jquery.js" %}></script>
+    <script src={% static "/js/animaciones.js" %}></script>
+</body>
+</html>

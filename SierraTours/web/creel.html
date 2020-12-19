@@ -1,0 +1,187 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Sierra Tours</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href={% static "/css/styles.css" %}>
+     <link rel="stylesheet" href={% static "/css/normalize.css" %}>
+     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
+    <link rel="shortcut icon" href={% static "/img/favicon.ico" %}/>
+    <link rel="stylesheet" href={% static "/css/all.min.css" %}>
+</head>
+
+<body>
+    <header class="fondo-cabecera">
+        <div class="cabecera">
+            <div class="contenido-barra">
+                <a href="/index/">
+                <img class="logo" src={% static "/img/logo.png" %} alt="Logo Sierra Tours">
+                </a>
+                <span class="titulo t-letra2">Sierra Tours</span>
+                <div>
+                 <label class="stroke2" style="font-size: 18pt;">Usuario: <span class="stroke" style="font-size: 16pt;">Invitado</span></label>
+                </div>
+            </div>
+            <div class="menu-movil">
+                <a href="#"><i class="fas fa-bars"></i></a>
+             </div>
+        <div id="header" >
+            <ul class="nav">                    
+                  <li><a href="index.html"> Inicio</a></li>
+
+                <li><a herf="#">Destinos</a>
+                    <ul>
+                        <li><a herf="#">Madera</a>        
+                            <ul>
+                                <li><a href="huapoca.html"> Huapoca</a></li>
+                            </ul>
+                        </li>
+                    
+                        <li class="p-creel"><a herf="">Sierra Tarahumara</a>
+                            <ul> 
+                                <li><a href="creel.html">Creel</a></li>
+                                <li><a href="barrancas.html">Barrancas del Cobre</a></li>  
+                            </ul>  
+                        </li>
+                </li>         
+        </ul>
+        <li><a href="registro.html">Registrarse</a></li>
+                <li><a href="login.html">Iniciar Sesion</a></li>
+                <li><a href="nosotros.html">Nosotros</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+        </div>
+    </div>
+ </header>
+
+       <h1 class="centrar-texto tamaño-titulo">Creel Pueblo Mágico</h1>
+        <div class="imagenes" >
+            <img src={% static "/img/creelbarra.jpg" %}>   
+        </div>
+
+  <main class="contenedor">
+    
+        <div class="informacion">
+            <p class="cuerpo1">
+                Creel se asienta sobre la esplendorosa Sierra Madre Occidental, 247 
+                kilómetros al suroeste de la ciudad de Chihuahua. La madre naturaleza ha bendecido 
+                este pueblo con gigantescas formaciones rocosas, románticos lagos, bosques infinitos y cascadas 
+                fascinantes. En el corazón de la Plaza de Armas encontrarás una estatua del homónimo del pueblo,
+                Enrique Creel. En la esquina noreste de la plaza esperan tu visita la iglesia neogótica de 
+                Cristo Rey y su vecina, la iglesia del siglo XX, Nuestra Señora de Lourdes.
+            </p>
+            <img  src={% static "/img/casc.jpg" %} width="400" height="300" style="border-radius: 15px;">
+        </div>
+        
+        
+        <div class="actividades">
+            <h2 class="caja">ACTIVIDADES</h2>
+
+            <div class="acomodar">
+                <img style="border-radius: 15px;" src={% static "/img/creelba.jpg" %} >
+                    <div class="info-paquete">
+                        <h3> Tour Lago de Arareco</h3>
+                        <p>Lugares que Visitaras:</p>      
+                        <ul>
+                                <li>Valle de las Ranas</li>
+                                <li>Lago de Arareko</li>
+                                <li>Valle de los hongos</li>
+                        </ul>                    
+                    </div> 
+                    
+                    <div class="inf-pago">
+                            <h3>Tour Lago de Arareco</h3> 
+                            <div class="info-paquete">
+                            <ul>
+                                <li> Desde $ 2,062 MXN </li>
+                                <li> 5 a 6 Horas</li>
+                            </ul>  
+                        </div>
+                            
+                    
+                        <button class="zoom1" style="border-radius: 15px;" onclick="alert('Para agregar este paquete es necesario registrarse e iniciar sesión')">
+                            RESERVAR
+                        </button>
+                        
+                    </div>   
+                </div>
+
+
+                <div class="acomodar">
+                    <img style="border-radius: 15px;" src= {% static "/img/maranat.jpg" %}>
+                        <div class="info-paquete">
+                        <h3> Maravillas Naturales</h3>
+                            <p>Lugares que Visitaras:</p>      
+                            <ul>
+                                <li>Valle de los Monjes</li>
+                                <li>Lago de Arareko</li>
+                                <li>Valle de los hongos</li>
+                            </ul>                    
+                    </div> 
+                    
+                    <div class="inf-pago">
+                            <h3>Maravillas Naturales</h3> 
+                                <div class="info-paquete">
+                                <ul>
+                                    <li> Desde $ 1,500 MXN </li>
+                                    <li> 3 a 4 Horas</li>
+                                </ul>  
+                            </div>
+                            
+                        
+                        <button class="zoom1" style="border-radius: 15px;" onclick="alert('Para agregar este paquete es necesario registrarse e iniciar sesión')">
+                            RESERVAR
+                        </button>
+                        
+                    </div>   
+                </div>
+                <div class="acomodar">
+                    <img style="border-radius: 15px;" src= {% static "/img/valle_monje.jpg" %}>
+                        <div class="info-paquete">
+                        <h3> Valle De Los Monjes</h3>
+                            <p>Reserva ahora y paga después</p>      
+                            <ul>
+                                <li>Sin tarifas de reservación</li>
+                                <li>Pagos seguros</li>
+                                <li>Horarios: 09:00 am a 04:30 pm</li>
+                            </ul>                    
+                    </div> 
+                    
+                    <div class="inf-pago">
+                            <h3>Valle De Los Monjes</h3> 
+                                <div class="info-paquete">
+                                <ul>
+                                    <li> Desde $ 750 MXN </li>
+                                    <li> 3 Horas</li>
+                                </ul>  
+                            </div>
+                            
+                        
+                        <button class="zoom1" style="border-radius: 15px;" onclick="alert('Para agregar este paquete es necesario registrarse e iniciar sesión')">
+                            RESERVAR
+                        </button>
+                        
+                    </div>   
+                </div>
+
+        </div> 
+  </main>     
+    <footer class="footer seccion">
+        <div class="contenedor contenedor-footer">
+            <nav class="navegacion">
+                <a href="index.html">Inicio</a>
+                <a href="#">Registrarse</a>
+                <a href="#">Iniciar Sesion</a>
+                <a href="nosotros.html">Nosotros</a>
+            </nav>
+            <p class="copyright">Todos los Derechos Reservados 2020 &copy;</p>
+        </div>
+    </footer>
+
+    <script src={% static "/js/jquery.js" %}></script>
+    <script src={% static "/js/animaciones.js" %}></script>
+
+</body>
+
+</html>
