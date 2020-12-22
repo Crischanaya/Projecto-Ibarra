@@ -20,14 +20,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'mxwq+j575e^a=c0n-xx1@81xr@7djus1&2nkq&*k24-p^2zdzl'
+SECRET_KEY = 'qao+68qvzeo6r^yo5%9-8$o9_zk%yjv)34ekr5$6!d+!%cny1a'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
-STATICFILES_DIRS = ['C:/Users/Noelt/Documents/GitHub/Projecto-Ibarra/SierraTours/web/static']
 
 
 # Application definition
@@ -39,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'SierraWeb',
 ]
 
 MIDDLEWARE = [
@@ -56,7 +55,7 @@ ROOT_URLCONF = 'SierraTours.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['C:/Users/Noelt/Documents/GitHub/Projecto-Ibarra/SierraTours/web'],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -77,8 +76,12 @@ WSGI_APPLICATION = 'SierraTours.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'BDsierratours',
+        'USER': 'postgres',
+        'PASSWORD': '1234',
+        'HOST': 'localhost',
+        'DATABASE_PORT': '5432', 
     }
 }
 

@@ -1,4 +1,4 @@
-var imagenes = ['/static/img/creel1.jpg','/static/img/creelbaner.jpg','/static/img/huapocabaner.jpg'];
+var imagenes = ['/static/SierraWeb/img/creel1.jpg','/static/SierraWeb/img/creelbaner.jpg','/static/SierraWeb/img/huapocabaner.jpg'];
 var direcciones = ['/barrancas/','/creel/','/huapoca/'];
 cont = 0;
 conturl = 0;

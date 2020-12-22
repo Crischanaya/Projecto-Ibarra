@@ -1,14 +1,77 @@
-{% extends "base.html" %}
-
 {% load static %}
+<!DOCTYPE html>
 
-{% block content %}
+<html lang="es">
 
-    <h1 class="centrar-texto tamaño-titulo">Huapoca Madera</h1>
-    <div class="imagenes" >
-        <img src={% static "/img/huap1.png" %}>   
+<head>
+    <meta charset="UTF-8">
+    <title>Sierra Tours</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href={% static "SierraWeb/css/styles.css" %}>
+     <link rel="stylesheet" href={% static "SierraWeb/css/normalize.css"%}>
+     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
+    <link rel="shortcut icon" href={% static "SierraWeb/img/favicon.ico" %} />
+    <link rel="stylesheet" href={% static "SierraWeb/css/all.min.css" %}>
+</head>
+
+<body>
+    <header class="fondo-cabecera">
+        <div class="cabecera">
+            <div class="contenido-barra">
+                <a href="/#/">
+                <img class="logo" src={% static "SierraWeb/img/logo.png" %} alt="Logo Sierra Tours">
+                </a>
+                <span class="titulo t-letra2">Sierra Tours</span>
+                <div>
+                 <label class="stroke2" style="font-size: 18pt;">Usuario: <span class="stroke" style="font-size: 16pt;">Invitado</span></label>
+                </div>
+            </div>
+            <div class="menu-movil">
+                <a href="#"><i class="fas fa-bars"></i></a>
+             </div>
+        <div id="header" >
+            <ul class="nav">                    
+                  <li><a href="/#/"> Inicio</a></li>
+
+                <li><a herf="#">Destinos</a>
+                    <ul>
+                        <li><a herf="#">Madera</a>        
+                            <ul>
+                                <li><a href="/huapoca/"> Huapoca</a></li>
+                            </ul>
+                        </li>
+                    
+                        <li class="p-creel"><a herf="">Sierra Tarahumara</a>
+                            <ul> 
+                                <li><a href="/creel/">Creel</a></li>
+                                <li><a href="/barrancas/">Barrancas del Cobre</a></li> 
+                                <li><a href="/recowata/">Recowata</a></li>  
+                            </ul>  
+                        </li>
+                </li>         
+        </ul>
+        <li><a href="/registro/">Registrarse</a></li>
+                <li><a href="/login/">Iniciar Sesion</a></li>
+                <li><a href="/nosotros/">Nosotros</a></li>
+                <li><a href="/contacto/">Contacto</a></li>
+        </div>
     </div>
+ </header>
 
+       <h1 class="centrar-texto tamaño-titulo">Huapoca Madera</h1>
+<div class="imagenes" >
+    <div class="galeria" style="--w: 800px; --h: 400px;">
+        <input type="radio" name="navegacion" id="_1" checked>
+        <input type="radio" name="navegacion" id="_2">
+        <input type="radio" name="navegacion" id="_3">
+        <input type="radio" name="navegacion" id="_4"> 
+        <img src={% static "SierraWeb/img/recowata/recowata1.png" %} width="800" height="400" alt="Galeria CSS 1" />
+        <img src={% static "SierraWeb/img/recowata/recowata2.png" %} width="800" height="400" alt="Galeria CSS 2"  />
+        <img src={% static "SierraWeb/img/recowata/recowata3.png" %} width="800" height="400" alt="Galeria CSS 3" />
+        <img src={% static "SierraWeb/img/recowata/recowata1.png" %} width="800" height="400" alt="Galeria CSS 4" />
+      </div>
+</div>
+ 
 
         
 <main class="contenedor">
@@ -26,7 +89,7 @@
             <br>
             Actualmente el manantial está acondicionado como balneario y cuenta con dos espaciosas albercas y un tobogán.
         </p>
-            <img  src={% static "/img/huapocabaner2.png" %} width="400" height="300" style="border-radius: 15px;">
+            <img  src={% static "SierraWeb/img/huapocabaner2.png" %} width="400" height="300" style="border-radius: 15px;">
     </div>
 
 
@@ -34,7 +97,7 @@
         <h2 class="caja">ACTIVIDADES</h2>
 
          <div class="acomodar">
-             <img style="border-radius: 15px;" src= {% static "/img/huap4.jpg" %}>
+             <img style="border-radius: 15px;" src={% static "SierraWeb/img/huap4.jpg" %} >
                  <div class="info-paquete">
                     <h3> Tour Vehiculos 4x4</h3>
                        <p></p>      
@@ -64,7 +127,7 @@
 
 
             <div class="acomodar">
-                <img style="border-radius: 15px;" src={% static "/img/huap3.png" %}>
+                <img style="border-radius: 15px;" src={% static "SierraWeb/img/huap3.png" %} >
                     <div class="info-paquete">
                        <h3> Tour Cotorra Serrana</h3>
                           <p></p>      
@@ -97,7 +160,7 @@
 
  --              
             <div class="acomodar">
-                <img style="border-radius: 15px;" src={% static "/img/huap2.png" %}>
+                <img style="border-radius: 15px;" src={% static "SierraWeb/img/huap2.png" %} >
                     <div class="info-paquete">
                        <h3>Toboganes</h3>
                           <p></p>      
@@ -130,4 +193,19 @@
       </div>        
  </main>  
 
- {% endblock %}
+    <footer class="footer seccion">
+        <div class="contenedor contenedor-footer">
+            <nav class="navegacion">
+                <a href="/#/">Inicio</a>
+                <a href="/registro/">Registrarse</a>
+                <a href="/login/">Iniciar Sesion</a>
+                <a href="/nosotros/">Nosotros</a>
+                <a href="/contacto/">Contacto</a>
+            </nav>
+            <p class="copyright">Todos los Derechos Reservados 2020 &copy;</p>
+        </div>
+    </footer>
+    <script src={% static "SierraWeb/js/jquery.js" %}></script>
+    <script src={% static "SierraWeb/js/animaciones.js" %}></script>
+</body>
+</html>
