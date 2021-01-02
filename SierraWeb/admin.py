@@ -12,10 +12,6 @@ class PaquetesAdmin(admin.ModelAdmin):
     list_display=("id_paquete", "nombre", "lugar", "precio")
     search_fields=("nombre", "lugar", "precio")
 
-class UserPaqueteAdmin(admin.ModelAdmin):
-    list_display=("id_userpaquete","")
-    search_fields=("")
-
 admin.site.register(Usuarios, UsuariosAdmin)
 admin.site.register(UserPaquete)
 admin.site.register(Paquetes, PaquetesAdmin)
