@@ -12,7 +12,7 @@
     <main class="contenedor seccion contenido-centrado">
         <h2 class="f-300 centrar-texto">Llena el formulario de Contacto</h2>
 
-        <form class="contacto" action="">
+        <form action="/contacto/" class="contacto" method="POST">{% csrf_token %}
             <fieldset>
                 <legend>Información Personal</legend>
                 <label for="nombre">Nombre:</label>
