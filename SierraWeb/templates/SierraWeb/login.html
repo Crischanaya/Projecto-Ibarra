@@ -55,7 +55,7 @@
     </div>
  
   <main>
-    <form class="login-pagina">
+    <form class="login-pagina" method="POST">{% csrf_token %}
         <u> <input type="email" class="login-username" autofocus="true" required="true" placeholder="Correo electronico" /></u>  
         <u><input type="password" class="login-password" required="true" placeholder="Contraseña" /></u>
          <input type="submit" name="Login" value="Iniciar sesion" class="login-submit" />
