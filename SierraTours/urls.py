@@ -18,6 +18,7 @@ from django.urls import path
 
 from SierraWeb import views
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('barrancas/', views.barrancas,),
@@ -29,4 +30,5 @@ urlpatterns = [
     path('nosotros/',views.nosotros),
     path('recowata/', views.recowata),
     path('registro/', views.registro),
+    path('guardar/', views.add_registro, name="agregarUsuario"),
 ]

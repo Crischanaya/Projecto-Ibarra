@@ -62,18 +62,22 @@ $("button.get-name").click(function(){
     <li><a href="/contacto/">Contacto</a></li>
 </div>
 </div>
-
+    
 <main class="espacio-registro">
-<form class="login-pagina mover-registro">
+<form action="/guardar/" class="login-pagina mover-registro" method="POST">{% csrf_token %}
     
-    <input  type="text" id="name"class="login-username" autofocus="true" required="true" placeholder="Nombre" />
-    <input  class="login-username" autofocus="true" required="true" placeholder="Apellidos" />
 
-    <input type="email" class="login-username" autofocus="true" required="true" placeholder="Correo electronico" />
-    <input type="password" class="login-password" required="true" placeholder="Contraseña" />
-    <input type="password" class="login-password" required="true" placeholder="Confirmar contraseña" />
-    
-    <input type="submit"  name="Login" value="Registrarse" class="login-submit" />
+    <input name="nombre" type="text" id="name" class="login-username" autofocus="true" required="true" placeholder="Nombre" />
+   
+    <input name="apellido" class="login-username" autofocus="true" required="true" placeholder="Apellidos" />
+
+    <input name="correo" type="email" class="login-username" autofocus="true" required="true" placeholder="Correo electronico" />
+   
+    <input name="password" type="password" class="login-password" required="true" placeholder="Contraseña" />
+   
+    <input name="password_confirm" type="password" class="login-password" required="true" placeholder="Confirmar contraseña" />
+  
+    <input type="submit"  name="Login" value="Registrar" class="login-submit" />
 
     <div class="terminos">
         <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">

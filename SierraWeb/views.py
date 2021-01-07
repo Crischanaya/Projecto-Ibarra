@@ -1,6 +1,9 @@
+from django.http import HttpRequest
 from django.shortcuts import render
 from django.core.mail import send_mail
 from django.conf import settings
+
+from SierraWeb.models import Usuarios
 
 # Create your views here.
 def barrancas(request):
@@ -45,4 +48,16 @@ def recowata(request):
     return render(request, "SierraWeb/recowata.html")
 
 def registro(request):
+  
     return render(request, "SierraWeb/registro.html")
+
+def add_registro(request):
+    print("ENTRO AL GUARDADO")
+    nombre = request.POST["nombre"]
+    apellido = request.POST["apellido"]
+    correo = request.POST["correo"]
+    password = request.POST["password"]
+    usuarios = Usuarios(nombre_usuario=nombre,apellido=apellido,correo=correo,password=password)
+    usuarios.save()
+   
+    return render(request, "SierraWeb/registro.html")    
