@@ -12,6 +12,7 @@
      <link rel="stylesheet" href={% static "SierraWeb/css/normalize.css" %}>
      <link rel="shortcut icon" href={% static "SierraWeb/img/favicon.ico" %}>
      <link rel="stylesheet" href={% static "SierraWeb/css/all.min.css"%}>
+     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </head>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script>
@@ -66,28 +67,40 @@ $("button.get-name").click(function(){
 <main class="espacio-registro">
 <form action="/guardar/" class="login-pagina mover-registro" method="POST">{% csrf_token %}
     
-
     <input name="nombre" type="text" id="name" class="login-username" autofocus="true" required="true" placeholder="Nombre" />
-   
     <input name="apellido" class="login-username" autofocus="true" required="true" placeholder="Apellidos" />
-
     <input name="correo" type="email" class="login-username" autofocus="true" required="true" placeholder="Correo electronico" />
-   
-    <input name="password" type="password" class="login-password" required="true" placeholder="Contraseña" />
-   
-    <input name="password_confirm" type="password" class="login-password" required="true" placeholder="Confirmar contraseña" />
-  
+    <input name="password" id="password" type="password" class="login-password" required="true" placeholder="Contraseña" />
+    <input name="password_confirm" id="confirm_password" type="password" class="login-password" required="true" placeholder="Confirmar contraseña" />
     <input type="submit"  name="Login" value="Registrar" class="login-submit" />
+   
 
-    <div class="terminos">
+    {% if respuesta == "completed" %}
+    <script>
+        Swal.fire({
+        icon: 'success',
+        title: 'Usuario Registrado con Exito',
+        })
+    </script> 
+    {% else %}
+    <script>
+        Swal.fire({
+        icon: 'error',
+        title: 'Usuario No Regitrado',
+        text: 'Intente insertardo nuevamente'
+        })
+    </script> 
+    {% endif %}
+   
+    <!--<div class="terminos">
         <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
         <label for="vehicle1" required>Acepto los terminos y condiciones </label><br>
         <input type="checkbox" id="vehicle1" name="vehicle2" value="Bike">
         <label for="vehicle1" required>Recibir ofertas y promociones por correo</label><br>
-    </div>
+    </div>-->
 </form>
 </main>
-
+  
 <footer class="footer seccion">
     <div class="contenedor contenedor-footer">
         <nav class="navegacion">
@@ -101,8 +114,25 @@ $("button.get-name").click(function(){
     </div>
 </footer>
 
+<script>
+    var password = document.getElementById("password")
+  , confirm_password = document.getElementById("confirm_password");
+
+function validatePassword(){
+  if(password.value != confirm_password.value) {
+    confirm_password.setCustomValidity("Las contraseñas no coinciden");
+  } else {
+    confirm_password.setCustomValidity('');
+  }
+}
+
+password.onchange = validatePassword;
+confirm_password.onkeyup = validatePassword;
+
+</script>
 <script src={% static "SierraWeb/js/jquery.js" %}></script>
 <script src={% static "SierraWeb/js/animaciones.js" %}></script>
+<script src={% static "SierraWeb/js/validacion.js" %}></script>
 
 
 </body>

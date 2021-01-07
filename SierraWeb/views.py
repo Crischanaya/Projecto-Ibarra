@@ -59,5 +59,10 @@ def add_registro(request):
     password = request.POST["password"]
     usuarios = Usuarios(nombre_usuario=nombre,apellido=apellido,correo=correo,password=password)
     usuarios.save()
-   
-    return render(request, "SierraWeb/registro.html")    
+    if usuarios != None:
+        respuesta = "completed";
+        print(usuarios)
+    else:
+        respuesta = "error";
+
+    return render(request, "SierraWeb/registro.html",{"respuesta":respuesta})    
