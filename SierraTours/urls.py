@@ -21,9 +21,11 @@ from SierraWeb import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls),
     path('barrancas/', views.barrancas,),
     path('contacto/', views.contacto),
     path('creel/', views.creel),
+    path('reservacion/', views.reservacion),
     path('huapoca/', views.huapoca),
     path('', views.index, name= 'index'),
     path('login/', views.login),

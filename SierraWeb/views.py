@@ -43,6 +43,9 @@ def login(request):
 
 def nosotros(request):
     return render(request, "SierraWeb/nosotros.html")
+    
+def reservacion(request):
+    return render(request, "SierraWeb/reservacion.html")    
 
 def recowata(request):
     return render(request, "SierraWeb/recowata.html")

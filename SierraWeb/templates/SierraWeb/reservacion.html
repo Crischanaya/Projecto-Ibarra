@@ -1,0 +1,151 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="es">
+  
+<head>
+    <meta charset="UTF-8">
+    <title>Sierra Tours</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
+     <link rel="stylesheet" href={% static "SierraWeb/css/styles.css" %}>
+     <link rel="stylesheet" href={% static "SierraWeb/css/normalize.css" %}>
+     <link rel="shortcut icon" href={% static "SierraWeb/img/favicon.ico" %}>
+     <link rel="stylesheet" href={% static "SierraWeb/css/all.min.css"%}>
+     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+</head>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+   $(document).ready(function(){
+$("button.get-name").click(function(){
+    var name = $("Registro exitoso, felicidades" +"#name").val();
+    alert(name);
+});
+   });
+</script>
+<div class="contenido-barra">
+    <a href="/#/">
+    <img class="logo" src={% static "SierraWeb/img/logo.png" %} alt="Logo Sierra Tours">
+    </a>
+    <span class="titulo t-letra2">Reserva tu paquete!</span>
+    <div>
+     <label class="stroke2" style="font-size: 18pt;">Usuario: <span class="stroke" style="font-size: 16pt;">Invitado</span></label>
+    </div>
+</div>
+<body class="fondo">
+    <div class="menu-movil">
+        <a href="#"><i class="fas fa-bars"></i></a>
+     </div>
+<div id="header" >
+<ul class="nav">                    
+    <li><a href="/#/"> Inicio</a></li>
+
+    <li><a>Destinos</a>
+        <ul>
+            <li><a>Madera</a>        
+                <ul>
+                    <li><a href="/huapoca/"> Huapoca</a></li>
+                </ul>
+            </li>
+        
+            <li class="p-creel"><a>Sierra Tarahumara</a>
+                <ul> 
+                    <li><a href="/creel/">Creel</a></li>
+                    <li><a href="/barrancas/">Barrancas del Cobre</a></li> 
+                    <li><a href="/recowata/">Recowata</a></li>  
+                </ul>  
+            </li>
+    </li>         
+</ul>
+    <li><a href="/registro/">Registrarse</a></li>
+    <li><a href="/login/">Iniciar Sesion</a></li>
+    <li><a href="/nosotros/">Nosotros</a></li>
+    <li><a href="/contacto/">Contacto</a></li>
+</div>
+</div>
+    
+<main class="espacio-registro">
+<form action="/guardar/" class="login-pagina mover-registro" method="POST">{% csrf_token %}
+
+    <table align="center">
+        <tr>
+            <td>
+ <!--Seleccionar fechas de llegada y salida -->   
+ <div style="font-size: 20pt;">Fecha de llegada</div>
+
+<input type="date" id="start" name="trip-start"
+       value="2018-07-22"
+       min="2018-01-01" max="2018-12-31">
+
+    </td>
+    <td style="width: 69pt;"></td>
+    <td>
+        <div style="font-size: 20pt;">Fecha de Salida</div>
+
+        <input type="date" id="start" name="trip-start"
+               value="2018-07-22"
+               min="2018-01-01" max="2018-12-31">
+
+    </td>
+    </tr>
+
+    </table>
+
+
+
+       
+    <input name="nombre" type="text" id="name" class="login-username" autofocus="true" required="true" placeholder="Nombre" />
+    <input name="apellido" class="login-username" autofocus="true" required="true" placeholder="Apellidos" />
+    <input name="correo" type="email" class="login-username" autofocus="true" required="true" placeholder="Correo electronico" />
+    <input name="password" id="password" type="password" class="login-password" required="true" placeholder="Contraseña" />
+    <input name="password_confirm" id="confirm_password" type="password" class="login-password" required="true" placeholder="Confirmar contraseña" />
+    <input type="submit"  name="Login" value="Registrar" class="login-submit" />
+   
+
+    
+   
+    <!--<div class="terminos">
+        <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+        <label for="vehicle1" required>Acepto los terminos y condiciones </label><br>
+        <input type="checkbox" id="vehicle1" name="vehicle2" value="Bike">
+        <label for="vehicle1" required>Recibir ofertas y promociones por correo</label><br>
+    </div>-->
+</form>
+</main>
+  
+<footer class="footer seccion">
+    <div class="contenedor contenedor-footer">
+        <nav class="navegacion">
+            <a href="/#/">Inicio</a>
+            <a href="/registro/">Registrarse</a>
+            <a href="/login/">Iniciar Sesion</a>
+            <a href="/nosotros/">Nosotros</a>
+            <a href="/contacto/">Contacto</a>
+        </nav>
+        <p class="copyright">Todos los Derechos Reservados 2020 &copy;</p>
+    </div>
+</footer>
+
+<script>
+    var password = document.getElementById("password")
+  , confirm_password = document.getElementById("confirm_password");
+
+function validatePassword(){
+  if(password.value != confirm_password.value) {
+    confirm_password.setCustomValidity("Las contraseñas no coinciden");
+  } else {
+    confirm_password.setCustomValidity('');
+  }
+}
+
+password.onchange = validatePassword;
+confirm_password.onkeyup = validatePassword;
+
+</script>
+<script src={% static "SierraWeb/js/jquery.js" %}></script>
+<script src={% static "SierraWeb/js/animaciones.js" %}></script>
+<script src={% static "SierraWeb/js/validacion.js" %}></script>
+
+
+</body>
+</html>
