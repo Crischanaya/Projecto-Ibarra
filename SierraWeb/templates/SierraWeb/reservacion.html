@@ -66,8 +66,16 @@ $("button.get-name").click(function(){
     
 <main class="espacio-registro">
 <form action="/guardar/" class="login-pagina mover-registro" method="POST">{% csrf_token %}
-
+    <div style="text-align: left; font-size: 9pt;">Asegura tu reservación<br>
+        Ingresa tu información para asegurar la tarifa y disponibilidad de tu viaje
+    </div>
+    <div style="height: 15pt;"></div>
+    <div style="font-size: 20pt; color: #299A3B;">
+   <b> Datos del Viaje y Reservacíon</b>
+</div>
     <table align="center">
+        
+        
         <tr>
             <td>
  <!--Seleccionar fechas de llegada y salida -->   
@@ -94,22 +102,63 @@ $("button.get-name").click(function(){
 
 
 
-    <table>
+
+    <table align="center">
        
-    <input name="nombre" type="text" id="name" class="login-username" autofocus="true" required="true" placeholder="Nombre" />
-    <input name="apellido" class="login-username" autofocus="true" required="true" placeholder="Apellidos" />
-    
-    <input type="submit"  name="Login" value="Registrar" class="login-submit" />
-    </table>
+        
+        <tr>
+           <td>
+               <div style="font-size: 10pt;">Titulos</div>
+            <select name="select" style="font-size: 10pt;">
+                <option value="value1">Sr.</option>
+                <option value="value2">Sra.</option>
+                <option value="value3">Srita.</option>
+              </select>
+           </td>
+           <td> 
+                <input name="nombre" type="text" id="name" class="login-username" autofocus="true" required="true" placeholder="Nombre" />
+                </td> 
+                <td>
+                <input name="apellido" class="login-username" autofocus="true" required="true" placeholder="Apellidos" />
+            </td>
+        </tr>
+ </table>
+   
+ <div>
+    <div >
+        <b style="font-size: 20pt; color: #299A3B;"> Datos de contacto</b><b style="font-size: 10pt; color: #C1D7C4;">(Para enviarte tu itinerario) </b>
+
+     </div>
+     <table align="center">
+
+        <tr>
+            <td>
+            <input name="correo" type="text" id="correo" class="login-username" autofocus="true" required="true" placeholder="Correo Electronico" />
+        </td>
+        <td>
+            <input name="nombre" type="text" id="name" class="login-username" autofocus="true" required="true" placeholder="Numero Telefonico" />
+        </td>
+        </tr>
+     </table>
+ </div>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ <input type="submit"  name="Login" value="Reservar" class="login-submit" />
+   
 
     
    
-    <!--<div class="terminos">
+    <div class="terminos">
         <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
         <label for="vehicle1" required>Acepto los terminos y condiciones </label><br>
         <input type="checkbox" id="vehicle1" name="vehicle2" value="Bike">
         <label for="vehicle1" required>Recibir ofertas y promociones por correo</label><br>
-    </div>-->
+    </div>
 </form>
 </main>
   
