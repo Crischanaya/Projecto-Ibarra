@@ -59,9 +59,19 @@ def registro(request):
     return render(request, "SierraWeb/registro.html")
 
 def pasarela(request):
-    return render(request, "SierraWeb/pasarela.html")    
+    paquetes='1'
+    #paquete= Paquetes.objects(id_Paquete_contains=paquetes)
+    
+
+    paquete=request.POST['1']
+    #paquetes="1"
+    return render(request, "SierraWeb/pasarela.html",{"idpaquete":paquete})  
+        
+   
+    
 
 def pago(request):
+   
     paquete = Paquetes.objects.get(pk=1)
     data = json.loads(request.body)
     order_id = data['orderID']
