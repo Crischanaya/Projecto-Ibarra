@@ -55,9 +55,12 @@
                        </div>
                         
                   
-                    <button class="zoom1" style="border-radius: 15px;" onclick="alert('Para agregar este paquete es necesario registrarse e iniciar sesión')">
-                        RESERVAR
-                    </button>
+                    <  <form method="POST" action="/pasarela/">  
+                        {% csrf_token %}
+                   <button class="zoom1" style="border-radius: 15px;" name="1"  value="7">
+                       RESERVAR
+                   </button>
+                      </form>
                     
                 </div>   
             </div>
@@ -87,9 +90,12 @@
                           </div>
                            
                      
-                       <button class="zoom1" style="border-radius: 15px;" onclick="alert('Para agregar este paquete es necesario registrarse e iniciar sesión')">
+                          <form method="POST" action="/pasarela/">  
+                            {% csrf_token %}
+                       <button class="zoom1" style="border-radius: 15px;" name="1"  value="8">
                            RESERVAR
                        </button>
+                          </form>
                        
                    </div>   
                </div>
@@ -120,10 +126,12 @@
                           </div>
                            
                      
-                   <a href="/reservacion"><button class="zoom1" style="border-radius: 15px;" onclick="reserva()">
+                          <form method="POST" action="/pasarela/">  
+                            {% csrf_token %}
+                       <button class="zoom1" style="border-radius: 15px;" name="1"  value="9">
                            RESERVAR
-                       </button></a>
-                       <script>
+                       </button>
+                          </form>
 
                         function reserva(){
                             alert("123");

@@ -2,10 +2,14 @@ from django.shortcuts import render
 from django.http import HttpRequest,JsonResponse
 from django.core.mail import send_mail
 from django.conf import settings
+from .models import Paquetes
 from paypalcheckoutsdk.core import PayPalHttpClient, SandboxEnvironment
 from paypalcheckoutsdk.orders import OrdersGetRequest, OrdersCaptureRequest
 from SierraWeb.models import Usuarios, Paquetes, Compra
 import sys, json
+import re
+
+
 
 
 
@@ -32,6 +36,11 @@ def contacto(request):
         send_mail(subject, message, email_from, recipient_list)
 
     return render(request, "SierraWeb/contacto.html")
+
+
+
+
+
 
 def creel(request):
     return render(request, "SierraWeb/creel.html")
@@ -63,9 +72,12 @@ def pasarela(request):
     #paquete= Paquetes.objects(id_Paquete_contains=paquetes)
     
 
-    paquete=request.POST['1']
-    #paquetes="1"
-    return render(request, "SierraWeb/pasarela.html",{"idpaquete":paquete})  
+    idpaquete=request.POST['1']
+    paquete=Paquetes.objects.filter(id_paquete=idpaquete)
+    lugar=Paquetes.objects.filter(id_paquete=idpaquete)
+
+    
+    return render(request, "SierraWeb/pasarela.html",{"nombre_paquete":paquete, "lugar":lugar})  
         
    
     

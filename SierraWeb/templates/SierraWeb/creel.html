@@ -50,9 +50,12 @@
                         </div>
                             
                     
-                        <button class="zoom1" style="border-radius: 15px;" onclick="alert('Para agregar este paquete es necesario registrarse e iniciar sesión')">
-                            RESERVAR
-                        </button>
+                        <form method="POST" action="/pasarela/">  
+                            {% csrf_token %}
+                       <button class="zoom1" style="border-radius: 15px;" name="1"  value="4">
+                           RESERVAR
+                       </button>
+                          </form>
                         
                     </div>   
                 </div>
@@ -80,9 +83,12 @@
                             </div>
                             
                         
-                        <button class="zoom1" style="border-radius: 15px;" onclick="alert('Para agregar este paquete es necesario registrarse e iniciar sesión')">
-                            RESERVAR
-                        </button>
+                            <form method="POST" action="/pasarela/">  
+                                {% csrf_token %}
+                           <button class="zoom1" style="border-radius: 15px;" name="1"  value="5">
+                               RESERVAR
+                           </button>
+                              </form>
                         
                     </div>   
                 </div>
@@ -108,9 +114,12 @@
                             </div>
                             
                         
-                        <button class="zoom1" style="border-radius: 15px;" onclick="alert('Para agregar este paquete es necesario registrarse e iniciar sesión')">
-                            RESERVAR
-                        </button>
+                            <form method="POST" action="/pasarela/">  
+                                {% csrf_token %}
+                           <button class="zoom1" style="border-radius: 15px;" name="1"  value="6">
+                               RESERVAR
+                           </button>
+                              </form>
                         
                     </div>   
                 </div>
