@@ -1,13 +1,13 @@
-from django.http import HttpRequest
 from django.shortcuts import render
+from django.http import HttpRequest,JsonResponse
 from django.core.mail import send_mail
 from django.conf import settings
 from paypalcheckoutsdk.core import PayPalHttpClient, SandboxEnvironment
 from paypalcheckoutsdk.orders import OrdersGetRequest, OrdersCaptureRequest
-
+from SierraWeb.models import Usuarios, Paquetes, Compra
 import sys, json
 
-from SierraWeb.models import Usuarios
+
 
 # Create your views here.
 def barrancas(request):
@@ -62,7 +62,41 @@ def pasarela(request):
     return render(request, "SierraWeb/pasarela.html")    
 
 def pago(request):
-    pass
+    paquete = Paquetes.objects.get(pk=1)
+    data = json.loads(request.body)
+    order_id = data['orderID']
+    detalle = GetOrder().get_order(order_id)
+    detalle_precio = float(detalle.result.purchase_units[0].amount.value)
+    print(detalle_precio)
+
+    if detalle_precio == paquete.precio:
+        transaccion = CaptureOrder().capture_order(order_id,debug=True)
+        pedido=Compra(
+            id_compra=transaccion.result.id,
+            nombre_cliente=transaccion.result.payer.name.given_name,
+            apellido_cliente=transaccion.result.payer.name.surname,
+            correo_cliente=transaccion.result.payer.email_address,
+            paquete=Paquetes.objects.get(pk=1),
+            status=transaccion.result.status,
+            codigo_estado=transaccion.status_code,
+            total_de_compra=transaccion.result.purchase_units[0].payments.captures[0].amount.value
+        )
+        pedido.save()
+
+        data = {
+            "id": f"{transaccion.result.id}",
+            "nombre_cliente": f"{transaccion.result.payer.name.given_name}",
+            "mensaje": "8)"
+        }
+
+        return JsonResponse(data)
+    else:
+        data={
+            "mensaje": "Error"
+        }   
+        return JsonResponse(data)
+    
+
 
 def add_registro(request):
     print("ENTRO AL GUARDADO")
@@ -138,22 +172,22 @@ class GetOrder(PayPalClient):
     request = OrdersGetRequest(order_id)
     #3. Call PayPal to get the transaction
     response = self.client.execute(request)
+    return response
     #4. Save the transaction in your database. Implement logic to save transaction to your database for future reference.
-    print('Status Code: ', response.status_code)
-    print('Status: ', response.result.status)
-    print('Order ID: ', response.result.id)
-    print('Intent: ', response.result.intent)
-    print('Links:')
-    for link in response.result.links:
-      print(('\t{}: {}\tCall Type: {}'.format(link.rel, link.href, link.method)))
-    print('Gross Amount: {} {}'.format(response.result.purchase_units[0].amount.currency_code,
-                       response.result.purchase_units[0].amount.value))
+   # print('Status Code: ', response.status_code)
+   # print('Status: ', response.result.status)
+   # print('Order ID: ', response.result.id)
+   # print('Intent: ', response.result.intent)
+   # print('Links:')
+   # for link in response.result.links:
+   #   print(('\t{}: {}\tCall Type: {}'.format(link.rel, link.href, link.method)))
+   # print('Gross Amount: {} {}'.format(response.result.purchase_units[0].amount.currency_code,
+    #                   response.result.purchase_units[0].amount.value))
 
 """This driver function invokes the get_order function with
    order ID to retrieve sample order details. """
-if __name__ == '__main__':
-  GetOrder().get_order('REPLACE-WITH-VALID-ORDER-ID')
-
+#if __name__ == '__main__':
+#  GetOrder().get_order('REPLACE-WITH-VALID-ORDER-ID')
 
 
 
@@ -170,25 +204,25 @@ class CaptureOrder(PayPalClient):
     response = self.client.execute(request)
     #4. Save the capture ID to your database. Implement logic to save capture to your database for future reference.
     if debug:
-      print('Status Code: ', response.status_code)
-      print('Status: ', response.result.status)
-      print('Order ID: ', response.result.id)
-      print('Links: ')
+      print ('Status Code: ', response.status_code)
+      print ('Status: ', response.result.status)
+      print ('Order ID: ', response.result.id)
+      print ('Links: ')
       for link in response.result.links:
-        print(('\t{}: {}\tCall Type: {}'.format(link.rel, link.href, link.method)))
-      print('Capture Ids: ')
+        print('\t{}: {}\tCall Type: {}'.format(link.rel, link.href, link.method))
+      print ('Capture Ids: ')
       for purchase_unit in response.result.purchase_units:
         for capture in purchase_unit.payments.captures:
-          print('\t', capture.id)
-      print("Buyer:")
-    #  print("\tEmail Address: {}\n\tName: {}\n\tPhone Number: {}".format(response.result.payer.email_address,
-    #    response.result.payer.name.given_name + " " + response.result.payer.name.surname,
-    #    response.result.payer.phone.phone_number.national_number))
+          print ('\t', capture.id)
+      print ("Buyer:")
+  #    print "\tEmail Address: {}\n\tName: {}\n\tPhone Number: {}".format(response.result.payer.email_address,
+  #      response.result.payer.name.given_name + " " + response.result.payer.name.surname,
+  #      response.result.payer.phone.phone_number.national_number)
     return response
 
 
 """This driver function invokes the capture order function.
 Replace Order ID value with the approved order ID. """
-if __name__ == "__main__":
-  order_id = 'REPLACE-WITH-APPORVED-ORDER-ID'
-  CaptureOrder().capture_order(order_id, debug=True)
+#if __name__ == "__main__":
+#  order_id = 'REPLACE-WITH-APPORVED-ORDER-ID'
+#  CaptureOrder().capture_order(order_id, debug=True)

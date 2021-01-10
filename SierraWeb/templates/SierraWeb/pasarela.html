@@ -137,7 +137,7 @@
       return actions.order.create({
         purchase_units: [{
           amount: {
-            value: '0.01'
+            value: '500'
           }
         }]
       });
@@ -155,10 +155,10 @@
   }).then(function(res) {
     return res.json();
   }).then(function(details) {
-    alert('Transaction approved by ' + details.payer_given_name);
+    alert(details.mensaje);
 
-})
-    }
+    })
+  }
   }).render('#paypal-button-container');
 </script>
     

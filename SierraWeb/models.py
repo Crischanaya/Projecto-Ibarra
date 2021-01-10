@@ -20,7 +20,7 @@ class Paquetes(models.Model):
     nombre = models.TextField()
     lugar = models.TextField()
     precio = models.DecimalField(max_digits=10, decimal_places=0)
-    
+
     def nombrePaquetes(self):
         txt = "{0}  /  Lugar: {1}  /  Precio: {2} "
         return txt.format(self.nombre,self.lugar,self.precio)
@@ -38,13 +38,14 @@ class UserPaquete(models.Model):
         return txt.format(self.id_usuario.nombreCompleto(),self.id_paquete.nombrePaquetes())
         
 class Compra(models.Model):
-    id_compra = models.AutoField(primary_key=True)
+    id_compra = models.CharField(primary_key=True,max_length=50)
     nombre_cliente = models.CharField(max_length= 20)
     apellido_cliente = models.CharField(max_length=40)
     correo_cliente = models.EmailField(max_length=100)
     paquete = models.ForeignKey(to=Paquetes, on_delete = models.SET_NULL, null= True)
     status = models.CharField(max_length=15)
     codigo_estado = models.CharField(max_length=100)
+    total_de_compra = models.DecimalField(max_digits=10,decimal_places=2, null = True)
 
     def __str__(self):
         return self.nombre_cliente        
