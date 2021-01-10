@@ -12,8 +12,27 @@
      <link rel="stylesheet" href={% static "SierraWeb/css/all.min.css" %}>   
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
      <script type="text/javascript" src={% static "SierraWeb/js/pasarela.js" %} defer></script>
+     <script>
+         function token(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+     return cookieValue;
+  }
+   const csrftoken = token('csrftoken');
+     </script>
   </head>
-  <body>
+  <body>      
+       <script src="https://www.paypal.com/sdk/js?client-id=ATHvG4ICTMzrdKnLOY1OsjGsjwottPajnDHEenNbkX2wL6ynD31WXYLklG6GzXR1SrlpomciEsaGglnJ"></script>
     <main>
       <section class="shopping-cart dark">
         <div class="container" id="container">
@@ -86,7 +105,10 @@
                       <input type="hidden" name="paymentMethodId" id="paymentMethodId" />
                       <input type="hidden" name="description" id="description" />
                       <br>
-                      <button type="submit" class="btn btn-primary btn-block">Pagar</button>
+                     <!-- <button type="submit" class="btn btn-primary btn-block">Pagar</button>-->
+                      <div id="paypal-button-container">
+
+                      </div>
                       <br>
                       <a id="go-back">
                         <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 10 10" class="chevron-left">
@@ -106,6 +128,39 @@
       <div class="footer_text">
          <p>Todos los Derechos Reservados SierraTours 2021 &copy;</p>
       </div>
-	</footer>
+    </footer>
+
+        <script>
+    paypal.Buttons({
+    createOrder: function(data, actions) {
+      // This function sets up the details of the transaction, including the amount and line item details.
+      return actions.order.create({
+        purchase_units: [{
+          amount: {
+            value: '0.01'
+          }
+        }]
+      });
+    },
+    onApprove: function(data) {
+  return fetch('/pago/', {
+    method: "POST",
+    headers: {
+      'content-type': 'application/json',
+      'X-CSRFToken': csrftoken,
+    },
+    body: JSON.stringify({
+      orderID: data.orderID
+    })
+  }).then(function(res) {
+    return res.json();
+  }).then(function(details) {
+    alert('Transaction approved by ' + details.payer_given_name);
+
+})
+    }
+  }).render('#paypal-button-container');
+</script>
+    
   </body>
 </html>

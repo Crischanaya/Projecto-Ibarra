@@ -37,3 +37,14 @@ class UserPaquete(models.Model):
         txt = " Usuario: {0}  /  Paquete: {1}"
         return txt.format(self.id_usuario.nombreCompleto(),self.id_paquete.nombrePaquetes())
         
+class Compra(models.Model):
+    id_compra = models.AutoField(primary_key=True)
+    nombre_cliente = models.CharField(max_length= 20)
+    apellido_cliente = models.CharField(max_length=40)
+    correo_cliente = models.EmailField(max_length=100)
+    paquete = models.ForeignKey(to=Paquetes, on_delete = models.SET_NULL, null= True)
+    status = models.CharField(max_length=15)
+    codigo_estado = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.nombre_cliente        

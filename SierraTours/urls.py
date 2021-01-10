@@ -21,7 +21,6 @@ from SierraWeb import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('admin/', admin.site.urls),
     path('barrancas/', views.barrancas,),
     path('contacto/', views.contacto),
     path('creel/', views.creel),
@@ -34,4 +33,5 @@ urlpatterns = [
     path('registro/', views.registro),
     path('guardar/', views.add_registro, name="agregarUsuario"),
     path('pasarela/', views.pasarela),
+    path('pago/', views.pago, name= "pago"),
 ]

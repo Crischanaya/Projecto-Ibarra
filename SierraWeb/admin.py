@@ -2,7 +2,7 @@ from django.contrib import admin
 
 # Register your models here.
 
-from SierraWeb.models import UserPaquete, Usuarios, Paquetes
+from SierraWeb.models import UserPaquete, Usuarios, Paquetes, Compra
 
 class UsuariosAdmin(admin.ModelAdmin):
     list_display=("id_usuario", "nombre_usuario", "apellido", "correo", "password")
@@ -15,3 +15,4 @@ class PaquetesAdmin(admin.ModelAdmin):
 admin.site.register(Usuarios, UsuariosAdmin)
 admin.site.register(UserPaquete)
 admin.site.register(Paquetes, PaquetesAdmin)
+admin.site.register(Compra)
