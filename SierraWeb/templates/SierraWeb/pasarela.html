@@ -1,0 +1,111 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Pasarela de pago</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+     <link rel="stylesheet" href={% static "SierraWeb/css/pasarela.css" %}>
+     <link rel="stylesheet" href={% static "SierraWeb/css/normalize.css" %}>
+     <link rel="shortcut icon" href={% static "SierraWeb/img/favicon.ico" %}>
+     <link rel="stylesheet" href={% static "SierraWeb/css/all.min.css" %}>   
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+     <script type="text/javascript" src={% static "SierraWeb/js/pasarela.js" %} defer></script>
+  </head>
+  <body>
+    <main>
+      <section class="shopping-cart dark">
+        <div class="container" id="container">
+          <div class="block-heading">
+              <img src={% static "SierraWeb/img/logo.png" %} alt="">
+            <p>Verifica el siguiente formulario, selecciona el numero de personas y prosigue con la compra de tu paquete.</p>
+          </div>
+          <div class="content">
+            <div class="row">
+              <div class="col-md-12 col-lg-8">
+                <div class="items">
+                  <div class="product">
+                    <div class="info">
+                      <div class="product-details">
+                        <div class="row justify-content-md-center">
+                          <div class="col-md-3">
+                            <img class="img-fluid mx-auto d-block image" src={% static "SierraWeb/img/huap3.png" %}>
+                          </div>
+                          <div class="col-md-4 product-detail">
+                            <h5>Paquete</h5>
+                            <div class="product-info">
+                              <p><b>Descripción: </b><span id="product-description"> Cotorra serrana</span><br>
+                              <b>Lugar: </b>Huapoca<br>
+                              <b>Fecha: </b>02/15/2021<br>
+                              <b>Precio:</b> $ <span id="unit-price">1200</span></p>
+                            </div>
+                          </div>
+                          <div class="col-md-3 product-detail">
+                            <label for="quantity"><h5>N° Personas</h5></label>
+                            <input type="number" id="quantity" min="1" pattern="^[0-9]+" value="1" class="form-control">
+                            <p>Por cada persona se agrega un 20% del precio del paquete</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-12 col-lg-4">
+                <div class="summary">
+                  <h3>Importe</h3>
+                  <div class="summary-item"><span class="text">Subtotal</span><span class="price" id="cart-total"></span></div>
+                  <button class="btn btn-primary btn-lg btn-block" id="checkout-btn">Continuar Pago</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Payment -->
+      <section class="payment-form dark">
+        <div class="container_payment">
+          <div class="block-heading">
+            <h2>Sierra Tours</h2>
+            <p>Verifica el total y presiona el boton de pagar</p>
+          </div>
+          <div class="form-payment">
+            <div class="products">
+              <h2 class="title">Cantidad a Pagar</h3>
+              <div class="item">
+                <span class="price" id="summary-price"></span>
+                <p class="item-name">Paquete x <span id="summary-quantity"></span> Persona(s)</p>
+              </div>
+              <div class="total">Total<span class="price" id="summary-total"></span></div>
+            </div>
+            <div class="payment-details">
+              <form action="/process_payment" method="post" id="paymentForm">
+                    <div class="form-group col-sm-12">
+                      <input type="hidden" name="transactionAmount" id="amount" value="10" />
+                      <input type="hidden" name="paymentMethodId" id="paymentMethodId" />
+                      <input type="hidden" name="description" id="description" />
+                      <br>
+                      <button type="submit" class="btn btn-primary btn-block">Pagar</button>
+                      <br>
+                      <a id="go-back">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 10 10" class="chevron-left">
+                          <path fill="#009EE3" fill-rule="nonzero"id="chevron_left" d="M7.05 1.4L6.2.552 1.756 4.997l4.449 4.448.849-.848-3.6-3.6z"></path>
+                        </svg>
+                        Regresar a detalles de compra
+                      </a>
+                    </div>
+                  </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <div class="footer_text">
+         <p>Todos los Derechos Reservados SierraTours 2021 &copy;</p>
+      </div>
+	</footer>
+  </body>
+</html>

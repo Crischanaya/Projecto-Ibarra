@@ -54,6 +54,9 @@ def registro(request):
   
     return render(request, "SierraWeb/registro.html")
 
+def pasarela(request):
+    return render(request, "SierraWeb/pasarela.html")    
+
 def add_registro(request):
     print("ENTRO AL GUARDADO")
     nombre = request.POST["nombre"]

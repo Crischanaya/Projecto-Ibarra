@@ -33,4 +33,5 @@ urlpatterns = [
     path('recowata/', views.recowata),
     path('registro/', views.registro),
     path('guardar/', views.add_registro, name="agregarUsuario"),
+    path('pasarela/', views.pasarela),
 ]
