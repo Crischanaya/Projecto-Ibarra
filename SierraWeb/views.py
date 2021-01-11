@@ -73,17 +73,26 @@ def pasarela(request):
     
 
     idpaquete=request.POST['1']
+    ruta='SierraWeb/img/pasarela/pas'+idpaquete+'.jpg'
     paquete=str(Paquetes.objects.get(id_paquete=idpaquete))
-    
-    a=paquete[2:200]
-        
+    idpaquete=int(request.POST['1'])
+    nombrepaquete=paquete[2:200]
 
+    if(idpaquete <4):
+        
+        lugar="Huapoca"
+    else:
+         if(idpaquete <7):
+            lugar="Creel"
+         else:
+            lugar="Barrancas del Cobre"
+      
     #paquete=infpaquete[0]
     #numeropac=infpaquete[0]
     
 
     
-    return render(request, "SierraWeb/pasarela.html",{"nombre_paquete":a, "lugar":idpaquete})  
+    return render(request, "SierraWeb/pasarela.html",{"nombre_paquete":nombrepaquete, "lugar":lugar, "ruta":ruta})  
         
    
     
