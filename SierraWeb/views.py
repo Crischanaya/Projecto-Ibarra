@@ -108,10 +108,11 @@ def pago(request):
     order_id = data['orderID']
     detalle = GetOrder().get_order(order_id)
     detalle_precio = float(detalle.result.purchase_units[0].amount.value)
-    print(detalle_precio)
+    #print(detalle_precio)
 
     if detalle_precio == paquete.precio:
         transaccion = CaptureOrder().capture_order(order_id,debug=True)
+        print(transaccion.result)
         pedido=Compra(
             id_compra=transaccion.result.id,
             nombre_cliente=transaccion.result.payer.name.given_name,
@@ -140,7 +141,7 @@ def pago(request):
 
 
 def add_registro(request):
-    print("ENTRO AL GUARDADO")
+    #print("ENTRO AL GUARDADO")
     nombre = request.POST["nombre"]
     apellido = request.POST["apellido"]
     correo = request.POST["correo"]

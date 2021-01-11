@@ -12,11 +12,12 @@
      <link rel="stylesheet" href={% static "SierraWeb/css/all.min.css" %}>   
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
      <script type="text/javascript" src={% static "SierraWeb/js/pasarela.js" %} defer></script>
+     <script type="text/javascript" src={% static "SierraWeb/js/paypal.js" %} defer></script>
      <script>
          function token(name) {
-    let cookieValue = null;
-    if (document.cookie && document.cookie !== '') {
-        const cookies = document.cookie.split(';');
+      let cookieValue = null;
+      if (document.cookie && document.cookie !== '') {
+          const cookies = document.cookie.split(';');
         for (let i = 0; i < cookies.length; i++) {
             const cookie = cookies[i].trim();
             // Does this cookie string begin with the name we want?
@@ -32,7 +33,7 @@
      </script>
   </head>
   <body>      
-       <script src="https://www.paypal.com/sdk/js?client-id=ATHvG4ICTMzrdKnLOY1OsjGsjwottPajnDHEenNbkX2wL6ynD31WXYLklG6GzXR1SrlpomciEsaGglnJ"></script>
+       <script src="https://www.paypal.com/sdk/js?client-id=ATHvG4ICTMzrdKnLOY1OsjGsjwottPajnDHEenNbkX2wL6ynD31WXYLklG6GzXR1SrlpomciEsaGglnJ&currency=MXN"></script>
     <main>
       <section class="shopping-cart dark">
         <div class="container" id="container">
@@ -60,7 +61,7 @@
                               <b>Lugar: </b>{{lugar}}<br>
                               <b>Fecha: </b>02/15/2021<br>
                              
-                              <b>Precio:</b> $ <span id="unit-price">{{precioo.precio}} </span></p>
+                              <b>Precio:</b> $<span id="unit-price">{{precioo.precio}} </span></p>
                             {%endfor%}
                             </div>
                           </div>
@@ -77,9 +78,13 @@
               </div>
               <div class="col-md-12 col-lg-4">
                 <div class="summary">
+                  <form action="//" method="post" id="paymentForm">{% csrf_token %}
+                    <input type="hidden" name="transactionAmount" id="amount" value="" />
+                    <input type="hidden" name="description" id="description" />
+                 </form>
                   <h3>Importe</h3>
                   <div class="summary-item"><span class="text">Subtotal</span><span class="price" id="cart-total"></span></div>
-                  <button class="btn btn-primary btn-lg btn-block" id="checkout-btn">Continuar Pago</button>
+                  <button class="btn btn-primary btn-lg btn-block" id="checkout-btn">Continuar Pago</button> 
                 </div>
               </div>
             </div>
@@ -91,7 +96,6 @@
         <div class="container_payment">
           <div class="block-heading">
             <img src={% static "SierraWeb/img/logo.png" %} alt="Logo Sierra Tours">
-            <p>Verifica el total y presiona el boton de pagar</p>
           </div>
           <div class="form-payment">
             <div class="products">
@@ -103,11 +107,8 @@
               <div class="total">Total<span class="price" id="summary-total"></span></div>
             </div>
             <div class="payment-details">
-              <form action="/process_payment" method="post" id="paymentForm">
                     <div class="form-group col-sm-12">
-                      <input type="hidden" name="transactionAmount" id="amount" value="10" />
-                      <input type="hidden" name="paymentMethodId" id="paymentMethodId" />
-                      <input type="hidden" name="description" id="description" />
+                    
                       <br>
                      <!-- <button type="submit" class="btn btn-primary btn-block">Pagar</button>-->
                       <div id="paypal-button-container">
@@ -122,7 +123,7 @@
                       </a>
                     </div>
                   </div>
-              </form>
+              
             </div>
           </div>
         </div>
@@ -133,38 +134,5 @@
          <p>Todos los Derechos Reservados SierraTours 2021 &copy;</p>
       </div>
     </footer>
-
-        <script>
-    paypal.Buttons({
-    createOrder: function(data, actions) {
-      // This function sets up the details of the transaction, including the amount and line item details.
-      return actions.order.create({
-        purchase_units: [{
-          amount: {
-            value: '500'
-          }
-        }]
-      });
-    },
-    onApprove: function(data) {
-  return fetch('/pago/', {
-    method: "POST",
-    headers: {
-      'content-type': 'application/json',
-      'X-CSRFToken': csrftoken,
-    },
-    body: JSON.stringify({
-      orderID: data.orderID
-    })
-  }).then(function(res) {
-    return res.json();
-  }).then(function(details) {
-    alert(details.mensaje);
-
-    })
-  }
-  }).render('#paypal-button-container');
-</script>
-    
   </body>
 </html>
