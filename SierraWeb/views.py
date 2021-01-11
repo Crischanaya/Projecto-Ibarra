@@ -73,14 +73,17 @@ def pasarela(request):
     
 
     idpaquete=request.POST['1']
-    paquete=Paquetes.objects.filter(id_paquete=idpaquete).values
+    paquete=str(Paquetes.objects.get(id_paquete=idpaquete))
     
+    a=paquete[2:200]
+        
+
     #paquete=infpaquete[0]
     #numeropac=infpaquete[0]
     
 
     
-    return render(request, "SierraWeb/pasarela.html",{"nombre_paquete":paquete, "lugar":idpaquete})  
+    return render(request, "SierraWeb/pasarela.html",{"nombre_paquete":a, "lugar":idpaquete})  
         
    
     
