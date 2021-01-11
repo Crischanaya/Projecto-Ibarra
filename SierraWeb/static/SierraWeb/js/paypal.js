@@ -2,7 +2,6 @@ var valor = updatePrice();
 var precio_final =valor[valor.length-1];
 function nose(){
    precio_final=valor[valor.length-1];
-  
    return precio_final;
  
 }

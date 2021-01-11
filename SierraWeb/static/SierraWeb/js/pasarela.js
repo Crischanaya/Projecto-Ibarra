@@ -42,8 +42,7 @@ function updatePrice(){
     
    
     total.push(String(amount));
-   // total = total.unshift(amount);
-    
+
    return total;
 
 };
