@@ -54,11 +54,15 @@
                           </ul>  
                        </div>
                         
-                  
-                    <button class="zoom1" style="border-radius: 15px;" onclick="alert('Para agregar este paquete es necesario registrarse e iniciar sesión')">
+                  <form method="POST" action="/pasarela/">  
+                    {% csrf_token %}
+                      <button class="zoom1" style="border-radius: 15px;" name="1" value="1">
                         RESERVAR
                     </button>
-                    
+
+                  </form>
+                 
+              
                 </div>   
             </div>
 
@@ -84,10 +88,12 @@
                              </ul>  
                           </div>
                            
-                     
-                       <button class="zoom1" style="border-radius: 15px;" onclick="alert('Para agregar este paquete es necesario registrarse e iniciar sesión')">
+                          <form method="POST" action="/pasarela/">  
+                            {% csrf_token %}
+                       <button class="zoom1" style="border-radius: 15px;" name="1"  value="2">
                            RESERVAR
                        </button>
+                          </form>
                        
                    </div>   
                </div>
@@ -95,7 +101,7 @@
 
 
 
- --              
+           
             <div class="acomodar">
                 <img style="border-radius: 15px;" src={% static "SierraWeb/img/huap2.png" %}>
                     <div class="info-paquete">
@@ -120,9 +126,12 @@
                           </div>
                            
                      
-                       <button class="zoom1" style="border-radius: 15px;" onclick="alert('Para agregar este paquete es necesario registrarse e iniciar sesión')">
+                          <form method="POST" action="/pasarela/">  
+                            {% csrf_token %}
+                       <button class="zoom1" style="border-radius: 15px;" name="1"  value="3">
                            RESERVAR
                        </button>
+                          </form>
                        
                    </div>   
                </div>

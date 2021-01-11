@@ -2,10 +2,14 @@ from django.shortcuts import render
 from django.http import HttpRequest,JsonResponse
 from django.core.mail import send_mail
 from django.conf import settings
+from .models import Paquetes
 from paypalcheckoutsdk.core import PayPalHttpClient, SandboxEnvironment
 from paypalcheckoutsdk.orders import OrdersGetRequest, OrdersCaptureRequest
 from SierraWeb.models import Usuarios, Paquetes, Compra
 import sys, json
+import re
+
+
 
 
 
@@ -33,6 +37,11 @@ def contacto(request):
 
     return render(request, "SierraWeb/contacto.html")
 
+
+
+
+
+
 def creel(request):
     return render(request, "SierraWeb/creel.html")
 
@@ -59,9 +68,41 @@ def registro(request):
     return render(request, "SierraWeb/registro.html")
 
 def pasarela(request):
-    return render(request, "SierraWeb/pasarela.html")    
+    
+    #paquete= Paquetes.objects(id_Paquete_contains=paquetes)
+    
+
+    idpaquete=request.POST['1']
+    ruta='SierraWeb/img/pasarela/pas'+idpaquete+'.jpg'
+    paquete=str(Paquetes.objects.get(id_paquete=idpaquete))
+    idpaquete=int(request.POST['1'])
+    nombrepaquete=paquete[2:200]
+    precioo= Paquetes.objects.filter(id_paquete=idpaquete).values
+    
+
+
+
+    if(idpaquete <4):
+        
+        lugar="Huapoca"
+    else:
+         if(idpaquete <7):
+            lugar="Creel"
+         else:
+            lugar="Barrancas del Cobre"
+      
+    #paquete=infpaquete[0]
+    #numeropac=infpaquete[0]
+    
+
+    
+    return render(request, "SierraWeb/pasarela.html",{"nombre_paquete":nombrepaquete, "lugar":lugar, "ruta":ruta,"precioo":precioo})  
+        
+   
+    
 
 def pago(request):
+   
     paquete = Paquetes.objects.get(pk=1)
     data = json.loads(request.body)
     order_id = data['orderID']
