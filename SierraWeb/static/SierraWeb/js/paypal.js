@@ -4,7 +4,7 @@ function nose(){
    precio_final=valor[valor.length-1];
   
    return precio_final;
-   
+ 
 }
 document.getElementById('quantity').addEventListener('change', nose);
 
