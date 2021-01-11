@@ -8,9 +8,6 @@ function nose(){
 }
 document.getElementById('quantity').addEventListener('change', nose);
 
-
-var valor = document.getElementById("amount").value;
-console.log(valor); */
 if(precio_final != "undefined"){
     paypal.Buttons({
         createOrder: function(data, actions) {
