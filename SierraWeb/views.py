@@ -68,16 +68,19 @@ def registro(request):
     return render(request, "SierraWeb/registro.html")
 
 def pasarela(request):
-    paquetes='1'
+    
     #paquete= Paquetes.objects(id_Paquete_contains=paquetes)
     
 
     idpaquete=request.POST['1']
-    paquete=Paquetes.objects.filter(id_paquete=idpaquete)
-    lugar=Paquetes.objects.filter(id_paquete=idpaquete)
+    paquete=Paquetes.objects.filter(id_paquete=idpaquete).values
+    
+    #paquete=infpaquete[0]
+    #numeropac=infpaquete[0]
+    
 
     
-    return render(request, "SierraWeb/pasarela.html",{"nombre_paquete":paquete, "lugar":lugar})  
+    return render(request, "SierraWeb/pasarela.html",{"nombre_paquete":paquete, "lugar":idpaquete})  
         
    
     

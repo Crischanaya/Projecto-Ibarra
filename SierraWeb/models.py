@@ -25,6 +25,8 @@ class Paquetes(models.Model):
         txt = "{0}  /  Lugar: {1}  /  Precio: {2} "
         return txt.format(self.nombre,self.lugar,self.precio)
 
+   
+
     def __str__(self):
         return '%s. %s , %s' %(self.id_paquete,self.nombre, self.lugar)
 
