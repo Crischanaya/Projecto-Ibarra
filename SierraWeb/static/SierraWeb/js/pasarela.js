@@ -52,38 +52,3 @@ updatePrice();
 
 //Retrieve product description
 document.getElementById('description').value = document.getElementById('product-description').innerHTML;
-
-  
-/*
-paypal.Buttons({
-    createOrder: function(data, actions) {
-      // This function sets up the details of the transaction, including the amount and line item details.
-      return actions.order.create({
-        purchase_units: [
-          {
-          description: "Paquetes",  
-          amount: {
-            currency_code: "MXN",
-            value: amount
-          }
-        }]
-      });
-    },
-    onApprove: function(data) {
-  return fetch('/pago/', {
-    method: "POST",
-    headers: {
-      'content-type': 'application/json',
-      'X-CSRFToken': csrftoken,
-    },
-    body: JSON.stringify({
-      orderID: data.orderID
-    })
-  }).then(function(res) {
-    return res.json();
-  }).then(function(details) {
-    alert(details.mensaje);
-
-    })
-  }
-  }).render('#paypal-button-container');*/
