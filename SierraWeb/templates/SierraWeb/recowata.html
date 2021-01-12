@@ -37,29 +37,29 @@
         <h2 class="caja">ACTIVIDADES</h2>
 
          <div class="acomodar">
-             <img style="border-radius: 15px;" src= {% static "SierraWeb/img/huap4.jpg" %}>
+             <img style="border-radius: 15px;" src= {% static "SierraWeb/img/recowata/reco1.jpg" %}>
                  <div class="info-paquete">
-                    <h3> Tour Puente Colgante</h3>
+                    <h3> Recorrido MAgico</h3>
                        <p></p>      
                        <ul>                                
-                            <li>Edades: 18+</li>
-                            <li>Duración: 8 Horas</li>
+                            <li>Edades: Todas</li>
+                            <li>Duración: 5 Horas</li>
                             <li>Disponibilidad: Diaria</li>
-                            <li>Horarios: 09:00 am a 09:00 pm</li>
+                            <li>Horarios: 07:00 am a 011:00 pm</li>
                        </ul>                    
                 </div> 
                 
                 <div class="inf-pago">
-                        <h3>Tour Puente Colgante</h3> 
+                        <h3>Recorrido Magico</h3> 
                          <div class="info-paquete">
                           <ul>
-                              <li> Desde $ 3,000 MXN </li>
+                              <li> Desde $ 200 MXN </li>
                           </ul>  
                        </div>
                         
-                  <form method="POST" action="/pasarela/">  
+                  <form method="GET" action="/pasarela/">  
                     {% csrf_token %}
-                      <button class="zoom1" style="border-radius: 15px;" name="1" value="1">
+                      <button class="zoom1" style="border-radius: 15px;" name="1" value="10">
                         RESERVAR
                     </button>
 
@@ -71,9 +71,9 @@
 
 
             <div class="acomodar">
-                <img style="border-radius: 15px;" src={% static "SierraWeb/img/huap3.png" %}>
+                <img style="border-radius: 15px;" src={% static "SierraWeb/img/recowata/reco2.jpg" %}>
                     <div class="info-paquete">
-                       <h3> Tour Cotorra Serrana</h3>
+                       <h3> Excurcion en Bicicleta</h3>
                           <p></p>      
                           <ul>
                                <li>Edades: Cualquiera</li>
@@ -84,16 +84,16 @@
                    </div> 
                    
                    <div class="inf-pago">
-                           <h3>Tour Cotorra Serrana</h3> 
+                           <h3>Excurcion en Bicicleta</h3> 
                             <div class="info-paquete">
                              <ul>
                                  <li> Desde $ 500 MXN </li>
                              </ul>  
                           </div>
                            
-                          <form method="POST" action="/pasarela/">  
+                          <form method="GET" action="/pasarela/">  
                             {% csrf_token %}
-                       <button class="zoom1" style="border-radius: 15px;" name="1"  value="2">
+                       <button class="zoom1" style="border-radius: 15px;" name="1"  value="11">
                            RESERVAR
                        </button>
                           </form>
@@ -106,32 +106,32 @@
 
            
             <div class="acomodar">
-                <img style="border-radius: 15px;" src={% static "SierraWeb/img/huap2.png" %}>
+                <img style="border-radius: 15px;" src={% static "SierraWeb/img/recowata/reco3.jpg" %}>
                     <div class="info-paquete">
-                       <h3>Toboganes</h3>
+                       <h3>Aguas Termales</h3>
                           <p></p>      
                           <ul>
-                               <li>Edades: Maxima 80 Años</li>
-                               <li>Duración: 3 Horas</li>
+                               <li>Edades: Cualquiera</li>
+                               <li>Duración: Todo el dia</li>
                                <li> Disponibilidad: Diaria</li>
-                               <li> Horarios: 09:00 am a 09:30 pm</li>
+                               <li> Horarios: Todo el dia</li>
                           
                           </ul>                    
                    </div> 
                    
                    <div class="inf-pago">
-                           <h3>Toboganes</h3> 
+                           <h3>Agues Termales</h3> 
                             <div class="info-paquete">
                              <ul>
-                                 <li> Desde $ 250 MXN </li>
+                                 <li> Desde $ 800 MXN </li>
                     
                              </ul>  
                           </div>
                            
                      
-                          <form method="POST" action="/pasarela/">  
+                          <form method="GET" action="/pasarela/">  
                             {% csrf_token %}
-                       <button class="zoom1" style="border-radius: 15px;" name="1"  value="3">
+                       <button class="zoom1" style="border-radius: 15px;" name="1"  value="12">
                            RESERVAR
                        </button>
                           </form>

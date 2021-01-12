@@ -72,10 +72,10 @@ def pasarela(request):
     #paquete= Paquetes.objects(id_Paquete_contains=paquetes)
     
 
-    idpaquete=request.POST['1']
+    idpaquete=request.GET['1']
     ruta='SierraWeb/img/pasarela/pas'+idpaquete+'.jpg'
     paquete=str(Paquetes.objects.get(id_paquete=idpaquete))
-    idpaquete=int(request.POST['1'])
+    idpaquete=int(request.GET['1'])
     nombrepaquete=paquete[2:200]
     precioo= Paquetes.objects.filter(id_paquete=idpaquete).values
     
