@@ -52,40 +52,25 @@
                         <h3>Tour Puente Colgante</h3> 
                          <div class="info-paquete">
                           <ul>
-                              <li> Desde $ 3,000 MXN </li>
+                              <li> Desde $ 500 MXN </li>
                           </ul>  
                        </div>
                         
-                   <form name="form1" method="GET" action="/pasarela/" >
+                   <form name="form1" method="GET" action="/pasarela/" id="1" >
                     {% csrf_token %}
-                   
-                      <button class="zoom1" style="border-radius: 15px;" name="1" value='1' onclick="alerta()">
+
+                    <button    class="zoom1"  style="border-radius: 15px;" name="1" value='1' onclick="alerta()">
                         RESERVAR
                         
                     </button>
+                   
+                    <input  type="hidden"  class="zoom1"  style="border-radius: 15px;" name="1" value='1' onclick="alerta()">
+                        
+                        
+                   </imput>
                     
                   </form>
-                  <script>
-                    function alerta(){
-                        event.preventDefault()
-                    Swal.fire({
-                  title: 'Deseas Reservar?',                   
-                  icon: 'warning',
-                  showCancelButton: true,
-                  confirmButtonColor: '#3085d6',
-                  cancelButtonColor: '#d33',
-                  confirmButtonText: 'Reservar Ahora!'
-                  }).then((result) => {
-                  if (result.isConfirmed) {
-                    
-                
-                  
-                  document.1.submit();
-                   }
-               return false;
-                  })}
-                </script>
-                  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+                 
                  
                  
               
@@ -114,11 +99,15 @@
                              </ul>  
                           </div>
                            
-                          <form method="POST" action="/pasarela/">  
+                          <form name="form2"  method="GET" action="/pasarela/">  
                             {% csrf_token %}
-                       <button class="zoom1" style="border-radius: 15px;" name="1"  value="2">
-                           RESERVAR
-                       </button>
+                            <button    class="zoom1"  style="border-radius: 15px;" name="1" value='2' onclick="alerta2()">
+                                RESERVAR
+                                
+                            </button>
+                           
+                            <input  type="hidden"  class="zoom1"  style="border-radius: 15px;" name="1" value='2' onclick="alerta()">
+                                
                           </form>
                        
                    </div>   
@@ -152,11 +141,15 @@
                           </div>
                            
                      
-                          <form method="GET" action="/pasarela/">  
+                          <form name="form3"  method="GET" action="/pasarela/">  
                             {% csrf_token %}
-                       <button class="zoom1" style="border-radius: 15px;" name="1"  value="3">
-                           RESERVAR
-                       </button>
+                            <button    class="zoom1"  style="border-radius: 15px;" name="1" value='3' onclick="alerta3()">
+                                RESERVAR
+                                
+                            </button>
+                           
+                            <input  type="hidden"  class="zoom1"  style="border-radius: 15px;" name="1" value='3' onclick="alerta()">
+                                
                           </form>
                        
                    </div>   
@@ -164,5 +157,56 @@
 
       </div>        
  </main>  
+ <script>
+    function alerta(){
+        event.preventDefault()
+    Swal.fire({
+  title: 'Deseas Reservar?',                   
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'Reservar Ahora!'
+  }).then((result) => {
+  if (result.isConfirmed) {
+      document.form1.submit();
+      
+   }
+return false;
+  })}
+
+  function alerta2(){
+        event.preventDefault()
+    Swal.fire({
+  title: 'Deseas Reservar?',                   
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'Reservar Ahora!'
+  }).then((result) => {
+  if (result.isConfirmed) {
+      document.form2.submit();
+   }
+return false;
+  })}
+
+  function alerta3(){
+        event.preventDefault()
+    Swal.fire({
+  title: 'Deseas Reservar?',                   
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'Reservar Ahora!'
+  }).then((result) => {
+  if (result.isConfirmed) {
+      document.form3.submit();
+   }
+return false;
+  })}
+</script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
  {% endblock %}

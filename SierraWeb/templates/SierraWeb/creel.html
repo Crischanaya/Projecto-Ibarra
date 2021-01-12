@@ -52,11 +52,15 @@
                         </div>
                             
                     
-                        <form method="GET" action="/pasarela/">  
+                        <form name="form1"  method="GET" action="/pasarela/">  
                             {% csrf_token %}
-                       <button class="zoom1" style="border-radius: 15px;" name="1"  value="4">
-                           RESERVAR
-                       </button>
+                            <button    class="zoom1"  style="border-radius: 15px;" name="1" value='4' onclick="alerta()">
+                                RESERVAR
+                                
+                            </button>
+                           
+                            <input  type="hidden"  class="zoom1"  style="border-radius: 15px;" name="1" value='4' onclick="alerta()">
+                                
                           </form>
                         
                     </div>   
@@ -85,11 +89,15 @@
                             </div>
                             
                         
-                            <form method="GET" action="/pasarela/">  
+                            <form name="form2"  method="GET" action="/pasarela/">  
                                 {% csrf_token %}
-                           <button class="zoom1" style="border-radius: 15px;" name="1"  value="5">
-                               RESERVAR
-                           </button>
+                                <button    class="zoom1"  style="border-radius: 15px;" name="1" value='5' onclick="alerta2()">
+                                    RESERVAR
+                                    
+                                </button>
+                               
+                                <input  type="hidden"  class="zoom1"  style="border-radius: 15px;" name="1" value='5' onclick="alerta()">
+                                    
                               </form>
                         
                     </div>   
@@ -116,17 +124,72 @@
                             </div>
                             
                         
-                            <form method="GET" action="/pasarela/">  
+                            <form name="form3"  method="GET" action="/pasarela/">  
                                 {% csrf_token %}
-                           <button class="zoom1" style="border-radius: 15px;" name="1"  value="6">
-                               RESERVAR
-                           </button>
+                                <button    class="zoom1"  style="border-radius: 15px;" name="1" value='6' onclick="alerta3()">
+                                    RESERVAR
+                                    
+                                </button>
+                               
+                                <input  type="hidden"  class="zoom1"  style="border-radius: 15px;" name="1" value='6' onclick="alerta()">
+                                    
                               </form>
                         
                     </div>   
                 </div>
 
         </div> 
-  </main>     
+  </main>  
+  <script>
+    function alerta(){
+        event.preventDefault()
+    Swal.fire({
+  title: 'Deseas Reservar?',                   
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'Reservar Ahora!'
+  }).then((result) => {
+  if (result.isConfirmed) {
+      document.form1.submit();
+      
+   }
+return false;
+  })}
+
+  function alerta2(){
+        event.preventDefault()
+    Swal.fire({
+  title: 'Deseas Reservar?',                   
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'Reservar Ahora!'
+  }).then((result) => {
+  if (result.isConfirmed) {
+      document.form2.submit();
+   }
+return false;
+  })}
+
+  function alerta3(){
+        event.preventDefault()
+    Swal.fire({
+  title: 'Deseas Reservar?',                   
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'Reservar Ahora!'
+  }).then((result) => {
+  if (result.isConfirmed) {
+      document.form3.submit();
+   }
+return false;
+  })}
+</script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>   
 
   {% endblock %}
