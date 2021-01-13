@@ -23,8 +23,11 @@
                 </a>
                 <span class="titulo t-letra2">Sierra Tours</span>
                 <div>
-                 <label class="stroke2" style="font-size: 18pt;">Usuario: <span class="stroke" style="font-size: 16pt;">Invitado</span></label>
-                </div>
+                    {%for emailbase in emailbase%}
+                    {%for passwbase in passwbase%}
+                 <label class="stroke2" style="font-size: 18pt;">Usuario: <span class="stroke" style="font-size: 16pt;">{{emailbase.nombre_usuario}} {{emailbase.apellido}}</span></label>
+                 {%endfor%}
+                 {%endfor%}                </div>
             </div>
             <div class="menu-movil">
                 <a href="#"><i class="fas fa-bars"></i></a>

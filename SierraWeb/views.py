@@ -68,8 +68,8 @@ def reservacion(request):
 
     
     
-    return render(request, "SierraWeb/reservacion.html",{"passwbase":passwbase,"emailbase":emailbase})
-    
+    return render(request, "SierraWeb/index.html",{"passwbase":passwbase,"emailbase":emailbase})
+
 
 
 def recowata(request):
