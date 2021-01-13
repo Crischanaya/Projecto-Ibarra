@@ -30,7 +30,9 @@ $("button.get-name").click(function(){
     <span class="titulo t-letra2">Reserva tu paquete!</span>
     <div>
         {%for emailbase in emailbase%}
-     <label class="stroke2" style="font-size: 18pt;">Usuario: <span class="stroke" style="font-size: 16pt;">{{emailbase.nombre_usuario}} {{emailbase.apellido}}</span></label>
+        {%for passwbase in passwbase%}
+     <label class="stroke2" style="font-size: 18pt;">Usuario: {{passwbase.password}}<span class="stroke" style="font-size: 16pt;">{{emailbase.nombre_usuario}} s{{emailbase.apellido}}</span></label>
+     {%endfor%}
      {%endfor%}
     </div>
 </div>
