@@ -31,7 +31,7 @@ $("button.get-name").click(function(){
     <div>
         {%for emailbase in emailbase%}
         {%for passwbase in passwbase%}
-     <label class="stroke2" style="font-size: 18pt;">Usuario: {{passwbase.password}}<span class="stroke" style="font-size: 16pt;">{{emailbase.nombre_usuario}} s{{emailbase.apellido}}</span></label>
+     <label class="stroke2" style="font-size: 18pt;">Usuario: <span class="stroke" style="font-size: 16pt;">{{emailbase.nombre_usuario}} {{emailbase.apellido}}</span></label>
      {%endfor%}
      {%endfor%}
     </div>
