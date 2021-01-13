@@ -3,6 +3,7 @@ from django.http import HttpRequest,JsonResponse
 from django.core.mail import send_mail
 from django.conf import settings
 from .models import Paquetes
+from .models import Usuarios
 from paypalcheckoutsdk.core import PayPalHttpClient, SandboxEnvironment
 from paypalcheckoutsdk.orders import OrdersGetRequest, OrdersCaptureRequest
 from SierraWeb.models import Usuarios, Paquetes, Compra
@@ -58,7 +59,18 @@ def nosotros(request):
     return render(request, "SierraWeb/nosotros.html")
     
 def reservacion(request):
-    return render(request, "SierraWeb/reservacion.html")    
+    email=request.GET['email']
+    passw=request.GET['pass']
+
+    emailbase= Usuarios.objects.filter(correo=email)
+    passwbase= Usuarios.objects.filter(password=passw)
+    
+
+    
+    
+    return render(request, "SierraWeb/reservacion.html",{"passwbase":passwbase,"emailbase":emailbase})
+    
+
 
 def recowata(request):
     return render(request, "SierraWeb/recowata.html")

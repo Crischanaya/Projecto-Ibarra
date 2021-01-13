@@ -53,11 +53,12 @@
             <li><a href="/contacto/">Contacto</a></li>
         </div>
     </div>
- 
-  <main>
-    <form class="login-pagina" method="POST">{% csrf_token %}
-        <u> <input type="email" class="login-username" autofocus="true" required="true" placeholder="Correo electronico" /></u>  
-        <u><input type="password" class="login-password" required="true" placeholder="Contraseña" /></u>
+    
+    <main>
+        <form class="login-pagina" method="GET" action=/reservacion/>
+            {% csrf_token %}
+        <u> <input type="email" class="login-username" autofocus="true" required="true" placeholder="Correo electronico" name="email"/></u>  
+        <u><input type="password" class="login-password" required="true" placeholder="Contraseña" name="pass"/></u>
          <input type="submit" name="Login" value="Iniciar sesion" class="login-submit" />
          
        </form>
