@@ -13,6 +13,7 @@
      <link rel="shortcut icon" href={% static "SierraWeb/img/favicon.ico" %}>
      <link rel="stylesheet" href={% static "SierraWeb/css/all.min.css"%}>
      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+     
 </head>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script>
@@ -72,9 +73,10 @@ $("button.get-name").click(function(){
     <input name="correo"  id="correo" type="email" class="login-username" autofocus="true" required="true" placeholder="Correo electronico" />
     <input name="password" id="contrasenna" type="password" class="login-password" required="true" placeholder="Contraseña" />
     <input name="password_confirm" id="confirm_password" type="password" class="login-password" required="true" placeholder="Confirmar contraseña" />
-    <div>
+   <div class="alertas-password">
+        <p>Usa 8 o más caracteres con una combinación de letras, números y símbolos</p> 
         <p class="formulario__input-error  msj-verificacion"></p>
-        <p>Usa 8 o más caracteres con una combinación de letras, números y símbolos</p>
+       
     </div>
     <input type="submit"  name="Login" value="Registrar" class="login-submit" />
    
@@ -118,26 +120,10 @@ $("button.get-name").click(function(){
     </div>
 </footer>
 
-<script>
-    var password = document.getElementById("password")
-  , confirm_password = document.getElementById("confirm_password");
-
-function validatePassword(){
-  if(password.value != confirm_password.value) {
-    confirm_password.setCustomValidity("Las contraseñas no coinciden");
-  } else {
-    confirm_password.setCustomValidity('');
-  }
-}
-
-password.onchange = validatePassword;
-confirm_password.onkeyup = validatePassword;
-
-</script>
 <script src={% static "SierraWeb/js/jquery.js" %}></script>
 <script src={% static "SierraWeb/js/animaciones.js" %}></script>
-<script src={% static "SierraWeb/js/validacion.js" %}></script>
-<script src="{% static "SierraWeb/js/validacion_password.js" %}></script>
+<script src={% static "SierraWeb/js/confirm_password.js" %}></script>
+<script src={% static "SierraWeb/js/validacion_password.js" %}></script>
 
 
 </body>
