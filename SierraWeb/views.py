@@ -64,11 +64,14 @@ def reservacion(request):
 
     emailbase= Usuarios.objects.filter(correo=email)
     passwbase= Usuarios.objects.filter(password=passw)
+
+    
+    return render(request, "SierraWeb/index.html",{"passwbase":passwbase,"emailbase":emailbase})
+
     
 
     
     
-    return render(request, "SierraWeb/index.html",{"passwbase":passwbase,"emailbase":emailbase})
 
 
 
