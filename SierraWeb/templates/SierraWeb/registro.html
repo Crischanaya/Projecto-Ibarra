@@ -65,13 +65,17 @@ $("button.get-name").click(function(){
 </div>
     
 <main class="espacio-registro">
-<form action="/guardar/" class="login-pagina mover-registro" method="POST">{% csrf_token %}
+<form name="form_registro" action="/guardar/" class="login-pagina mover-registro" method="POST" onsubmit="return enviarFormulario();" >{% csrf_token %}
     
     <input name="nombre" type="text" id="name" class="login-username" autofocus="true" required="true" placeholder="Nombre" />
     <input name="apellido" class="login-username" autofocus="true" required="true" placeholder="Apellidos" />
     <input name="correo"  id="correo" type="email" class="login-username" autofocus="true" required="true" placeholder="Correo electronico" />
-    <input name="password" id="password" type="password" class="login-password" required="true" placeholder="Contraseña" />
+    <input name="password" id="contrasenna" type="password" class="login-password" required="true" placeholder="Contraseña" />
     <input name="password_confirm" id="confirm_password" type="password" class="login-password" required="true" placeholder="Confirmar contraseña" />
+    <div>
+        <p class="formulario__input-error  msj-verificacion"></p>
+        <p>Usa 8 o más caracteres con una combinación de letras, números y símbolos</p>
+    </div>
     <input type="submit"  name="Login" value="Registrar" class="login-submit" />
    
 
@@ -82,7 +86,7 @@ $("button.get-name").click(function(){
         title: 'Usuario Registrado con Exito',
         })
     </script> 
-    {% else %}
+    {% elif respuesta == "error" %}
     <script>
         Swal.fire({
         icon: 'error',
@@ -133,6 +137,7 @@ confirm_password.onkeyup = validatePassword;
 <script src={% static "SierraWeb/js/jquery.js" %}></script>
 <script src={% static "SierraWeb/js/animaciones.js" %}></script>
 <script src={% static "SierraWeb/js/validacion.js" %}></script>
+<script src="{% static "SierraWeb/js/validacion_password.js" %}></script>
 
 
 </body>
