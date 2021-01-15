@@ -63,7 +63,7 @@ def huapoca(request):
 def index(request):
     return render(request, "SierraWeb/index.html")
 
-def login(request):
+def login(request):  #No esta funcionando el login, solo redirecciona al index
     if request.method == 'POST':
         correo = request.method.POST.get('correo')
         password = request.method.POST.get('password')
