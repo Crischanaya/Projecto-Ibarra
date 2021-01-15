@@ -1,5 +1,5 @@
-from django.shortcuts import render
-from django.http import HttpRequest,JsonResponse
+from django.shortcuts import render, redirect
+from django.http import HttpRequest,JsonResponse, HttpResponse
 from django.core.mail import send_mail
 from django.conf import settings
 from .models import Paquetes
@@ -15,6 +15,17 @@ import re
 
 
 # Create your views here.
+
+def home(request):
+    if 'user' in request.session:
+        current_user = request.session['user']
+        param = {'current_user': current_user}
+        return rende(request, 'base.html', param)
+    else:
+        return redirect('login')
+    return render(request, 'login.html')
+
+
 def barrancas(request):
     return render(request, "SierraWeb/barrancas.html")
 
@@ -53,7 +64,15 @@ def index(request):
     return render(request, "SierraWeb/index.html")
 
 def login(request):
-    return render(request, "SierraWeb/login.html")
+        correo = request.POST["correo"]
+        password = request.POST["password"]
+        check_user = Usuarios.objects.get(correo=correo, password=password)
+        usuario = check_user.nombre_usuario
+        if check_user:
+            request.session['user'] = correo
+            return redirect('index')
+        else:
+            return redirect('/login')
 
 def nosotros(request):
     return render(request, "SierraWeb/nosotros.html")
@@ -68,18 +87,12 @@ def reservacion(request):
     
     return render(request, "SierraWeb/index.html",{"passwbase":passwbase,"emailbase":emailbase})
 
-    
-
-    
-    
-
-
 
 def recowata(request):
     return render(request, "SierraWeb/recowata.html")
 
 def registro(request):
-  
+    
     return render(request, "SierraWeb/registro.html")
 
 def pasarela(request):
@@ -161,15 +174,21 @@ def add_registro(request):
     apellido = request.POST["apellido"]
     correo = request.POST["correo"]
     password = request.POST["password"]
-    usuarios = Usuarios(nombre_usuario=nombre,apellido=apellido,correo=correo,password=password)
-    usuarios.save()
-    if usuarios != None:
-        respuesta = "completed"
-        print(usuarios)
+    if Usuarios.objects.filter(correo=correo).count()>0:
+        return redirect('/registro')
     else:
-        respuesta = "error"
+        usuarios = Usuarios(nombre_usuario=nombre,apellido=apellido,correo=correo,password=password)
+        usuarios.save()
+        return redirect('/login')
+    #if usuarios != None:
+    #    respuesta = "completed"
+    #    print(usuarios)
+    #else:
+    #    respuesta = "error"
 
-    return render(request, "SierraWeb/registro.html",{"respuesta":respuesta})    
+    #return render(request, "SierraWeb/registro.html",{"respuesta":respuesta})   
+
+
 
 
 
