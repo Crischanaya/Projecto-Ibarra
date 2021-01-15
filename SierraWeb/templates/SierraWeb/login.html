@@ -55,7 +55,7 @@
     </div>
     
     <main>
-        <form class="login-pagina" method="GET" action="{% url "index"%}">
+        <form class="login-pagina" method="GET" action="{% url "index" %}">
             {% csrf_token %}
         <u> <input type="email" class="login-username" autofocus="true" required="true" placeholder="Correo electronico" name="email"/></u>  
         <u><input type="password" class="login-password" required="true" placeholder="Contraseña" name="pass"/></u>
