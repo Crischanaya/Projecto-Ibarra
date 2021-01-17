@@ -17,12 +17,13 @@ document.getElementById('go-back').addEventListener('click', function(){
 });
 
 var total=[];
+var count;
 //Handle price update
 function updatePrice(){
     let quantity = document.getElementById('quantity').value;
     let unitPrice = document.getElementById('unit-price').innerHTML;
     quantity = parseFloat(quantity);
-    let count = quantity;
+    count = quantity;
     let amount;
     if(quantity >= 0){
         if(quantity >= 2){
@@ -38,9 +39,7 @@ function updatePrice(){
      amount = amount.toFixed(2);
     document.getElementById('cart-total').innerHTML = '$ ' + amount;
     document.getElementById('summary-price').innerHTML = '$ ' + unitPrice;
-    console.log(count);
     if(count == 1){
-       console.log(quantity);
         document.getElementById('summary-quantity').innerHTML = quantity;
     }
    else if(count == 2){ 

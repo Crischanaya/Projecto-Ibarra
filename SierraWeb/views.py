@@ -4,7 +4,7 @@ from django.core.mail import send_mail
 from django.conf import settings
 from paypalcheckoutsdk.core import PayPalHttpClient, SandboxEnvironment
 from paypalcheckoutsdk.orders import OrdersGetRequest, OrdersCaptureRequest
-from SierraWeb.models import Usuarios, Paquetes, Compra
+from SierraWeb.models import Usuarios, Paquetes, Compras
 import sys, json
 import re
 
@@ -70,7 +70,6 @@ def home(request):
         current_user = request.session['user']
         param = {'Usuario': current_user}
         status = request.GET.get('status')
-        print(status)
         if status == "completed" or status == "error":
             return render(request,'SierraWeb/index.html',{"alerta": status,'Usuario': current_user})
         return render(request,'SierraWeb/index.html',param)
@@ -153,23 +152,37 @@ def pasarela(request):
 
 def pago(request):
     paquete_id= request.session['id_paquete']
-    print(paquete_id)
     paquete = Paquetes.objects.get(pk=paquete_id)
+    current_user = request.session['user']
+    usuario = Usuarios.objects.get(nombre_usuario=current_user)
     data = json.loads(request.body)
+    personas = data['personas']
     order_id = data['orderID']
     detalle = GetOrder().get_order(order_id)
     detalle_precio = float(detalle.result.purchase_units[0].amount.value)
+    total_personas = int(personas)
+    for i in range(total_personas):
+        total= (float(paquete.precio))*(i*.20)
+        acum_total= total + float(paquete.precio)
+    
+    #print(acum_total)    
     #print(detalle_precio)
+    #print(paquete.precio)
 
-    if detalle_precio == paquete.precio:
+    if detalle_precio == acum_total:
         transaccion = CaptureOrder().capture_order(order_id,debug=True)
         print(transaccion.result)
-        pedido=Compra(
+        print("entro a guardar")
+        pedido=Compras(
             id_compra=transaccion.result.id,
-            nombre_cliente=transaccion.result.payer.name.given_name,
-            apellido_cliente=transaccion.result.payer.name.surname,
+            nombre_usuario= usuario.nombre_usuario,
+            apellido_usuario=usuario.apellido,
+            nombre_paypal=transaccion.result.payer.name.given_name,
+            apellido_paypal=transaccion.result.payer.name.surname,
             correo_cliente=transaccion.result.payer.email_address,
             paquete=Paquetes.objects.get(pk=paquete_id),
+            n_personas=personas,
+            fecha_paquete=paquete.fecha,
             status=transaccion.result.status,
             codigo_estado=transaccion.status_code,
             total_de_compra=transaccion.result.purchase_units[0].payments.captures[0].amount.value

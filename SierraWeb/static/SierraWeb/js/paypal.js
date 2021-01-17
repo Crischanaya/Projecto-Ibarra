@@ -7,6 +7,7 @@ function nose(){
 }
 document.getElementById('quantity').addEventListener('change', nose);
 
+
 if(precio_final != "undefined"){
     paypal.Buttons({
         createOrder: function(data, actions) {
@@ -30,7 +31,8 @@ if(precio_final != "undefined"){
           'X-CSRFToken': csrftoken,
         },
         body: JSON.stringify({
-          orderID: data.orderID
+          orderID: data.orderID,
+          personas: document.getElementById('summary-quantity').textContent
         })
       }).then(function(res) {
         return res.json();
