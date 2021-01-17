@@ -2,8 +2,6 @@ from django.shortcuts import render, redirect
 from django.http import HttpRequest,JsonResponse, HttpResponse
 from django.core.mail import send_mail
 from django.conf import settings
-from .models import Paquetes
-from .models import Usuarios
 from paypalcheckoutsdk.core import PayPalHttpClient, SandboxEnvironment
 from paypalcheckoutsdk.orders import OrdersGetRequest, OrdersCaptureRequest
 from SierraWeb.models import Usuarios, Paquetes, Compra
@@ -16,20 +14,20 @@ import re
 
 # Create your views here.
 
-def home(request):
-    if 'user' in request.session:
-        current_user = request.session['user']
-        param = {'current_user': current_user}
-        return rende(request, 'base.html', param)
-    else:
-        return redirect('login')
-    return render(request, 'login.html')
-
-
 def barrancas(request):
+    if 'user' in request.session:
+      current_user = request.session['user']
+      param = {'Usuario':current_user}
+      return render(request, "SierraWeb/barrancas.html",param)
+
     return render(request, "SierraWeb/barrancas.html")
 
 def contacto(request):
+    if 'user' in request.session:
+       current_user = request.session['user']
+       param = {'Usuario':current_user}
+       return render(request, "SierraWeb/contacto.html",param)
+
     if request.method=="POST":
        
         subject=request.POST["asunto"] 
@@ -51,87 +49,102 @@ def contacto(request):
 
 
 
-
-
-
 def creel(request):
+    if 'user' in request.session:
+      current_user = request.session['user']
+      param = {'Usuario':current_user}
+      return render(request, "SierraWeb/creel.html",param)
+
     return render(request, "SierraWeb/creel.html")
 
 def huapoca(request):
+    if 'user' in request.session:
+       current_user = request.session['user']
+       param = {'Usuario':current_user}
+       return render(request, "SierraWeb/huapoca.html",param)
+
     return render(request, "SierraWeb/huapoca.html")
 
+def home(request):
+    if 'user' in request.session:
+        current_user = request.session['user']
+        param = {'Usuario': current_user}
+        return render(request,'SierraWeb/index.html',param)
+    else:
+        return redirect('index')    
+
 def index(request):
-    return render(request, "SierraWeb/index.html")
+    if 'user' in request.session:
+       current_user = request.session['user']
+       param = {'Usuario':current_user}
+       return render(request, "SierraWeb/index.html",param)   
+
+    return render(request, 'SierraWeb/index.html')    
 
 def login(request):  #No esta funcionando el login, solo redirecciona al index
     if request.method == 'POST':
-        correo = request.method.POST.get('correo')
-        password = request.method.POST.get('password')
-        usuario = request.method.POST.get('nombre_usuario')
-        check_user = Usuarios.objects.filter(correo=correo, password=password)
+        correo = request.POST['correo']
+        password = request.POST['pass']
+        check_user = Usuarios.objects.get(correo=correo, password=password)
         if check_user:
-            check_user = Usuarios.objects.get(nombre_usuario)
-            request.session['user'] = check_user
-            return redirect('/login')
+            usuario = check_user.nombre_usuario 
+            request.session['user'] = usuario
+            return redirect('home')
         else:
             return HttpResponse('Usuario no encontrado, porfavor ingrese un usuario existente')
 
     return render(request, "SierraWeb/login.html")
 
+def logout(request):
+    try:
+        del request.session['user']
+    except:
+        return redirect('login')
+    return redirect('index')    
+
 def nosotros(request):
-    return render(request, "SierraWeb/nosotros.html")
+    if 'user' in request.session:
+      current_user = request.session['user']
+      param = {'Usuario':current_user}
+      return render(request, "SierraWeb/nosotros.html",param)
+
+    return render(request, "SierraWeb/nosotros.html")  
     
-def reservacion(request):
-    email=request.GET['email']
-    passw=request.GET['pass']
-
-    emailbase= Usuarios.objects.filter(correo=email)
-    passwbase= Usuarios.objects.filter(password=passw)
-
-    
-    return render(request, "SierraWeb/index.html",{"passwbase":passwbase,"emailbase":emailbase})
-
-
 def recowata(request):
+    if 'user' in request.session:
+      current_user = request.session['user']
+      param = {'Usuario':current_user}
+      return render(request, "SierraWeb/recowata.html",param)
+    
     return render(request, "SierraWeb/recowata.html")
 
 def registro(request):
-    
     return render(request, "SierraWeb/registro.html")
 
 def pasarela(request):
+    if 'user' in request.session:
+        #paquete= Paquetes.objects(id_Paquete_contains=paquetes)
+        idpaquete=request.GET['1']
+        ruta='SierraWeb/img/pasarela/pas'+idpaquete+'.jpg'
+        paquete=str(Paquetes.objects.get(id_paquete=idpaquete))
+        idpaquete=int(request.GET['1'])
+        nombrepaquete=paquete[2:200]
+        precioo= Paquetes.objects.filter(id_paquete=idpaquete).values
     
-    #paquete= Paquetes.objects(id_Paquete_contains=paquetes)
-    
+        if(idpaquete <4):
+            
+            lugar="Huapoca"
+        else:
+            if(idpaquete <7):
+                lugar="Creel"
+            else:
+                lugar="Barrancas del Cobre"
 
-    idpaquete=request.GET['1']
-    ruta='SierraWeb/img/pasarela/pas'+idpaquete+'.jpg'
-    paquete=str(Paquetes.objects.get(id_paquete=idpaquete))
-    idpaquete=int(request.GET['1'])
-    nombrepaquete=paquete[2:200]
-    precioo= Paquetes.objects.filter(id_paquete=idpaquete).values
-    
-
-
-
-    if(idpaquete <4):
-        
-        lugar="Huapoca"
+        return render(request, "SierraWeb/pasarela.html",{"nombre_paquete":nombrepaquete, "lugar":lugar, "ruta":ruta,"precioo":precioo})        
     else:
-         if(idpaquete <7):
-            lugar="Creel"
-         else:
-            lugar="Barrancas del Cobre"
-      
-    #paquete=infpaquete[0]
-    #numeropac=infpaquete[0]
-    
-
-    
-    return render(request, "SierraWeb/pasarela.html",{"nombre_paquete":nombrepaquete, "lugar":lugar, "ruta":ruta,"precioo":precioo})  
+        alerta = {'alerta':"activar"}
+        return render(request, "SierraWeb/login.html",alerta)  
         
-   
-    
 
 def pago(request):
    
@@ -179,11 +192,16 @@ def add_registro(request):
     correo = request.POST["correo"]
     password = request.POST["password"]
     if Usuarios.objects.filter(correo=correo).count()>0:
-        return redirect('/registro')
+        return redirect('registro')
     else:
         usuarios = Usuarios(nombre_usuario=nombre,apellido=apellido,correo=correo,password=password)
         usuarios.save()
-        return redirect('/login')
+        if usuarios !=None:
+            respuesta = "completed"
+        else:
+            respuesta = "error"
+        return render(request, "SierraWeb/registro.html",{"respuesta":respuesta})        
+        #return redirect('login')
     #if usuarios != None:
     #    respuesta = "completed"
     #    print(usuarios)
@@ -191,20 +209,6 @@ def add_registro(request):
     #    respuesta = "error"
 
     #return render(request, "SierraWeb/registro.html",{"respuesta":respuesta})   
-
-
-    def loginus(request):
-        correo = request.POST["correo"]
-        password = request.POST["password"]
-        check_user = Usuarios.objects.get(correo=correo, password=password)
-        usuario = check_user.nombre_usuario
-        if check_user:
-            request.session['user'] = correo
-            return redirect('/index')
-        else:
-            return redirect('/login')
-
-
 
 
  # INTEGRACION DE PAYPAL
@@ -274,9 +278,6 @@ class GetOrder(PayPalClient):
    #   print(('\t{}: {}\tCall Type: {}'.format(link.rel, link.href, link.method)))
    # print('Gross Amount: {} {}'.format(response.result.purchase_units[0].amount.currency_code,
     #                   response.result.purchase_units[0].amount.value))
-
-"""This driver function invokes the get_order function with
-   order ID to retrieve sample order details. """
 #if __name__ == '__main__':
 #  GetOrder().get_order('REPLACE-WITH-VALID-ORDER-ID')
 
@@ -312,8 +313,7 @@ class CaptureOrder(PayPalClient):
     return response
 
 
-"""This driver function invokes the capture order function.
-Replace Order ID value with the approved order ID. """
+
 #if __name__ == "__main__":
 #  order_id = 'REPLACE-WITH-APPORVED-ORDER-ID'
 #  CaptureOrder().capture_order(order_id, debug=True)

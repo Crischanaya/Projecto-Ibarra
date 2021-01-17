@@ -12,6 +12,7 @@
      <link rel="stylesheet" href={% static "SierraWeb/css/normalize.css" %}>
      <link rel="shortcut icon" href={% static "SierraWeb/img/favicon.ico" %}>
      <link rel="stylesheet" href={% static "SierraWeb/css/all.min.css" %}>
+     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </head>
 <div class="contenido-barra">
     <a href="/#/">
@@ -46,18 +47,18 @@
                         </ul>  
                     </li>
             </li>         
-        </ul>
-        <li><a href="/registro/">Registrarse</a></li>
-            <li><a href="/login/">Iniciar Sesion</a></li>
+        </ul> 
             <li><a href="/nosotros/">Nosotros</a></li>
-            <li><a href="/contacto/">Contacto</a></li>
+            <li><a href="/contacto/">Contacto</a></li>  
+            <li><a href="/login/">Iniciar Sesion</a></li>
+            <li><a href="/registro/">Registrarse</a></li>
         </div>
     </div>
     
     <main>
-        <form class="login-pagina" method="GET" action="{% url "index" %}">
+        <form class="login-pagina" method="POST" action="/login/">
             {% csrf_token %}
-        <u> <input type="email" class="login-username" autofocus="true" required="true" placeholder="Correo electronico" name="email"/></u>  
+        <u> <input type="email" class="login-username" autofocus="true" required="true" placeholder="Correo electronico" name="correo"/></u>  
         <u><input type="password" class="login-password" required="true" placeholder="Contraseña" name="pass"/></u>
          <input type="submit" name="Login" value="Iniciar sesion" class="login-submit" />
          
@@ -65,7 +66,16 @@
        <a href="#" class="login-forgot-pass">Olvidaste tu contraseña?</a>     
   </main>  
 
+      {% if alerta == "activar" %}
+        <script>
+            Swal.fire({
+            icon: 'error',
+            title: 'Es necesario iniciar sesión para reservar',
+            text: 'Inicie sesión o registrese'
+            })
+        </script> 
 
+      {% endif %}
         <script src={% static "SierraWeb/js/jquery.js" %}></script>
         <script src={% static "SierraWeb/js/animaciones.js" %}></script>
  </body>

@@ -5,7 +5,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Sierra Tours</title>
+    <title>Inicio</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
      <link rel="stylesheet" href={% static "SierraWeb/css/styles.css" %}>
@@ -20,9 +20,17 @@
                    <img class="logo" src={% static "SierraWeb/img/logo.png" %} alt="Logo Sierra Tours">
                 </a>
                 <span class="titulo t-letra2">Sierra Tours</span>
-                <div>
-                 <label class="stroke2" style="font-size: 18pt;">Usuario: <span class="stroke" style="font-size: 16pt;"></span></label>
+                {% if Usuario %}
+                <div class="contendor-inf-usuario">
+                 <label class="stroke2" style="font-size: 18pt;">Usuario: <span class="stroke" style="font-size: 16pt;">{{Usuario}}</span></label>
+                 <a class="btn-logout" href="{% url 'logout' %}">Cerrar Sesion</a>
                 </div>
+               
+                {% else %}
+                <div>
+                   <label class="stroke2" style="font-size: 18pt;">Usuario: <span class="stroke" style="font-size: 16pt;">Invitado</span></label>
+                </div>
+                {% endif %}
             </div>
         <div class="">    
             <div class="menu-movil">
@@ -48,11 +56,15 @@
                             </ul>  
                         </li>
                 </li>         
-           </ul>
-                <li><a href="/registro/">Registrarse</a></li>
-                <li><a href="/login/">Iniciar Sesion</a></li>
+           </ul> 
                 <li><a href="/nosotros/">Nosotros</a></li>
                 <li><a href="/contacto/">Contacto</a></li>
+
+                {% if Usuario %}
+                {% else %}    
+                <li><a href="/login/">Iniciar Sesion</a></li> 
+                <li><a href="/registro/">Registrarse</a></li>
+                {% endif %}
          </div>
      </div>
 
@@ -172,12 +184,18 @@
 
     <footer class="footer seccion">
         <div class="contenedor contenedor-footer">
-            <nav class="navegacion">
+            <nav class="navegacion">  
+                {% if Usuario %}
                 <a href="/#/">Inicio</a>
-                <a href="/registro/">Registrarse</a>
-                <a href="/login/">Iniciar Sesion</a>
                 <a href="/nosotros/">Nosotros</a>
                 <a href="/contacto/">Contacto</a>
+                {% else %}
+                <a href="/#/">Inicio</a>
+                <a href="/nosotros/">Nosotros</a>
+                <a href="/contacto/">Contacto</a>
+                <a href="/registro/">Registrarse</a>
+                <a href="/login/">Iniciar Sesion</a>
+                {% endif %}
             </nav>
             <p class="copyright">Todos los Derechos Reservados 2020 &copy;</p>
         </div>

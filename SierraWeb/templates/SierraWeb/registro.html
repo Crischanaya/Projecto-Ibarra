@@ -58,10 +58,12 @@ $("button.get-name").click(function(){
             </li>
     </li>         
 </ul>
-    <li><a href="/registro/">Registrarse</a></li>
-    <li><a href="/login/">Iniciar Sesion</a></li>
+
     <li><a href="/nosotros/">Nosotros</a></li>
-    <li><a href="/contacto/">Contacto</a></li>
+    <li><a href="/contacto/">Contacto</a></li> 
+    <li><a href="/login/">Iniciar Sesion</a></li>   
+    <li><a href="/registro/">Registrarse</a></li>
+   
 </div>
 </div>
     
@@ -86,6 +88,12 @@ $("button.get-name").click(function(){
         Swal.fire({
         icon: 'success',
         title: 'Usuario Registrado con Exito',
+        confirmButtonText: 'Aceptar',
+        }).then((result) => {
+            if (result.value) {
+               window.location.href = "{% url 'login' %}";
+            }
+            return false;
         })
     </script> 
     {% elif respuesta == "error" %}
@@ -93,7 +101,7 @@ $("button.get-name").click(function(){
         Swal.fire({
         icon: 'error',
         title: 'Usuario No Regitrado',
-        text: 'Intente insertardo nuevamente'
+        text: 'Intente insertarlo nuevamente'
         })
     </script> 
     {% endif %}
@@ -111,10 +119,10 @@ $("button.get-name").click(function(){
     <div class="contenedor contenedor-footer">
         <nav class="navegacion">
             <a href="/#/">Inicio</a>
+            <a href="/nosotros/">Nosotros</a>
+            <a href="/contacto/">Contacto</a>  
             <a href="/registro/">Registrarse</a>
             <a href="/login/">Iniciar Sesion</a>
-            <a href="/nosotros/">Nosotros</a>
-            <a href="/contacto/">Contacto</a>
         </nav>
         <p class="copyright">Todos los Derechos Reservados 2020 &copy;</p>
     </div>

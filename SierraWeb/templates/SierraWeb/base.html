@@ -5,7 +5,8 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Sierra Tours</title>
+    <title>{% block title %}{% endblock %}</title>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <link rel="stylesheet" href={% static "SierraWeb/css/styles.css" %}>
      <link rel="stylesheet" href={% static "SierraWeb/css/normalize.css" %}>
@@ -15,6 +16,7 @@
 </head>
 
 <body>
+               
     <header class="fondo-cabecera">
         <div class="cabecera">
             <div class="contenido-barra">
@@ -22,12 +24,16 @@
                 <img class="logo" src={% static "SierraWeb/img/logo.png" %} alt="Logo Sierra Tours">
                 </a>
                 <span class="titulo t-letra2">Sierra Tours</span>
+                {% if Usuario %}
+                <div class="contendor-inf-usuario">
+                    <label class="stroke2" style="font-size: 18pt;">Usuario: <span class="stroke" style="font-size: 16pt;">{{Usuario}}</span></label>
+                    <a class="btn-logout" href="{% url 'logout' %}">Cerrar Sesion</a>
+                </div>
+                {% else %}
                 <div>
-                    {%for emailbase in emailbase%}
-                    {%for passwbase in passwbase%}
-                 <label class="stroke2" style="font-size: 18pt;">Usuario: <span class="stroke" style="font-size: 16pt;">{{emailbase.nombre_usuario}} {{emailbase.apellido}}</span></label>
-                 {%endfor%}
-                 {%endfor%}                </div>
+                    <label class="stroke2" style="font-size: 18pt;">Usuario: <span class="stroke" style="font-size: 16pt;">Invitado</span></label>
+                </div>
+                {% endif %}
             </div>
             <div class="menu-movil">
                 <a href="#"><i class="fas fa-bars"></i></a>
@@ -46,23 +52,27 @@
                     
                         <li class="p-creel"><a herf="">Sierra Tarahumara</a>
                             <ul> 
-                                <li><a href="/creel/">Creel</a></li>
-                                <li><a href="/barrancas/">Barrancas del Cobre</a></li> 
-                                <li><a href="/recowata/">Recowata</a></li>  
+                                <li><a href="{% url 'creel' %}">Creel</a></li>
+                                <li><a href="{% url 'barrancas' %}">Barrancas del Cobre</a></li> 
+                                <li><a href="{% url 'recowata' %}">Recowata</a></li>  
                             </ul>  
                         </li>
                 </li>         
         </ul>
-        <li><a href="/registro/">Registrarse</a></li>
-                <li><a href="/login/">Iniciar Sesion</a></li>
-                <li><a href="/nosotros/">Nosotros</a></li>
-                <li><a href="/contacto/">Contacto</a></li>
+              
+                <li><a href="{% url 'nosotros' %}">Nosotros</a></li>
+                <li><a href="{% url 'contacto' %}">Contacto</a></li> 
+                {% if Usuario %}
+                {% else %}    
+                <li><a href="/login/">Iniciar Sesion</a></li> 
+                <li><a href="/registro/">Registrarse</a></li>
+                {% endif %}
         </div>
     </div>
  </header>
 
   <!-- Contenido Cambiante -->
-    {% block content %}
+   {% block body %}
 
 
     {% endblock %}
@@ -72,11 +82,14 @@
     <footer class="footer seccion">
         <div class="contenedor contenedor-footer">
             <nav class="navegacion">
+                {% if Usuario %}
                 <a href="/#/">Inicio</a>
+                <a href="/nosotros/">Nosotros</a>
+                <a href="/contacto/">Contacto</a> 
+                {% else %} 
                 <a href="/registro/">Registrarse</a>
                 <a href="/login/">Iniciar Sesion</a>
-                <a href="/nosotros/">Nosotros</a>
-                <a href="/contacto/">Contacto</a>
+                {% endif %}
             </nav>
             <p class="copyright">Todos los Derechos Reservados 2020 &copy;</p>
         </div>
