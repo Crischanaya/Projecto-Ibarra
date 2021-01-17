@@ -69,6 +69,10 @@ def home(request):
     if 'user' in request.session:
         current_user = request.session['user']
         param = {'Usuario': current_user}
+        status = request.GET.get('status')
+        print(status)
+        if status == "completed" or status == "error":
+            return render(request,'SierraWeb/index.html',{"alerta": status,'Usuario': current_user})
         return render(request,'SierraWeb/index.html',param)
     else:
         return redirect('index')    
@@ -77,7 +81,7 @@ def index(request):
     if 'user' in request.session:
        current_user = request.session['user']
        param = {'Usuario':current_user}
-       return render(request, "SierraWeb/index.html",param)   
+       return render(request, "SierraWeb/index.html",param) 
 
     return render(request, 'SierraWeb/index.html')    
 
@@ -125,6 +129,7 @@ def pasarela(request):
     if 'user' in request.session:
         #paquete= Paquetes.objects(id_Paquete_contains=paquetes)
         idpaquete=request.GET['1']
+        request.session['id_paquete'] = idpaquete
         ruta='SierraWeb/img/pasarela/pas'+idpaquete+'.jpg'
         paquete=str(Paquetes.objects.get(id_paquete=idpaquete))
         idpaquete=int(request.GET['1'])
@@ -147,8 +152,9 @@ def pasarela(request):
         
 
 def pago(request):
-   
-    paquete = Paquetes.objects.get(pk=1)
+    paquete_id= request.session['id_paquete']
+    print(paquete_id)
+    paquete = Paquetes.objects.get(pk=paquete_id)
     data = json.loads(request.body)
     order_id = data['orderID']
     detalle = GetOrder().get_order(order_id)
@@ -163,7 +169,7 @@ def pago(request):
             nombre_cliente=transaccion.result.payer.name.given_name,
             apellido_cliente=transaccion.result.payer.name.surname,
             correo_cliente=transaccion.result.payer.email_address,
-            paquete=Paquetes.objects.get(pk=1),
+            paquete=Paquetes.objects.get(pk=paquete_id),
             status=transaccion.result.status,
             codigo_estado=transaccion.status_code,
             total_de_compra=transaccion.result.purchase_units[0].payments.captures[0].amount.value
@@ -173,10 +179,11 @@ def pago(request):
         data = {
             "id": f"{transaccion.result.id}",
             "nombre_cliente": f"{transaccion.result.payer.name.given_name}",
-            "mensaje": "8)"
+            "mensaje": "completed"
         }
 
         return JsonResponse(data)
+        #return render(request,"SierraWeb/index.html",{"pago_finalizado":"completed"})
     else:
         data={
             "mensaje": "Error"
@@ -214,8 +221,8 @@ def add_registro(request):
  # INTEGRACION DE PAYPAL
 class PayPalClient:
     def __init__(self):
-        self.client_id = "ATHvG4ICTMzrdKnLOY1OsjGsjwottPajnDHEenNbkX2wL6ynD31WXYLklG6GzXR1SrlpomciEsaGglnJ"
-        self.client_secret = "EKDVwsZI9y0hR4hxOwPzywdbh9WOwOJ_MkmJ7dzbdYGtTbg9XDtR7bt-BlEn1kGr0b67hZv_IqFr7PIu"
+        self.client_id = "ASfsijiN0GpuI7nV8DQFNOKGDt966uv3MZx_U8J8gRSyLn2b51SpBHgFetuFmCVfmYTVffgDUxTi4QBX"
+        self.client_secret = "EINXILPWJqa4CHykfAPncbmSe6kz6NtgHmquYZHdkwOG_do8e9w0j-1MN8MEtPxXE960pu54UYQ20OpC"
 
         """Set up and return PayPal Python SDK environment with PayPal access credentials.
            This sample uses SandboxEnvironment. In production, use LiveEnvironment."""

@@ -35,7 +35,15 @@ if(precio_final != "undefined"){
       }).then(function(res) {
         return res.json();
       }).then(function(details) {
-        alert(details.mensaje);
+          if(details.mensaje == "completed"){
+             //window.location.href = "{% url 'login' %}";
+             window.location.href ="http://127.0.0.1:8000/home/?status=completed"
+            
+          }
+          if(details.mensaje == "Error"){
+             window.location.href ="http://127.0.0.1:8000/home/?status=error" 
+          } 
+        //alert(details.mensaje);
     
         })
       }

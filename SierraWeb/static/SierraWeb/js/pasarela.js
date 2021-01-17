@@ -22,21 +22,35 @@ function updatePrice(){
     let quantity = document.getElementById('quantity').value;
     let unitPrice = document.getElementById('unit-price').innerHTML;
     quantity = parseFloat(quantity);
-    console.log(quantity);
+    let count = quantity;
     let amount;
     if(quantity >= 0){
-        if(quantity > 1){
-        amount = parseInt(unitPrice) * (quantity * .20);
-        amount = amount + parseInt(unitPrice);
+        if(quantity >= 2){
+        quantity--; 
+        amount = parseFloat(unitPrice) * (quantity * .2);
+        amount = parseFloat(amount) + parseFloat(unitPrice);
+      
         }
         else{  
-            amount = parseInt(unitPrice) * parseInt(quantity);
+            amount = parseFloat(unitPrice) * parseInt(quantity);
         }
     }
      amount = amount.toFixed(2);
     document.getElementById('cart-total').innerHTML = '$ ' + amount;
     document.getElementById('summary-price').innerHTML = '$ ' + unitPrice;
-    document.getElementById('summary-quantity').innerHTML = quantity;
+    console.log(count);
+    if(count == 1){
+       console.log(quantity);
+        document.getElementById('summary-quantity').innerHTML = quantity;
+    }
+   else if(count == 2){ 
+        console.log(count);
+        document.getElementById('summary-quantity').innerHTML = count;
+    }
+    else{
+        document.getElementById('summary-quantity').innerHTML = quantity + 1;
+    }
+   
     document.getElementById('summary-total').innerHTML = '$ ' + amount;
     document.getElementById('amount').value = amount;
     

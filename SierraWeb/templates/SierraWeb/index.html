@@ -12,6 +12,7 @@
      <link rel="stylesheet" href={% static "SierraWeb/css/normalize.css" %}>
      <link rel="shortcut icon" href={% static "SierraWeb/img/favicon.ico" %}>
      <link rel="stylesheet" href={% static "SierraWeb/css/all.min.css" %}>
+     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </head>
 <body>
      <header class="site-header inicio">  
@@ -200,6 +201,25 @@
             <p class="copyright">Todos los Derechos Reservados 2020 &copy;</p>
         </div>
     </footer>
+
+    {% if alerta == "completed" %}
+        <script>
+            Swal.fire({
+            icon: 'success',
+            title: 'El Pago Se Realizo Correctamente',
+            text: 'Gracias por su compra!'
+            })
+        </script>
+    {% endif %}
+    {% if alerta == "error" %}
+    <script>
+        Swal.fire({
+        icon: 'error',
+        title: 'Pago Inconcluso',
+        text: 'Intente nuevamente'
+        })
+    </script>
+    {% endif %}
 
 
     <script src={% static "SierraWeb/js/jquery.js" %}></script>
