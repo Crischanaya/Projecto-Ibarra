@@ -84,17 +84,18 @@ def index(request):
 
     return render(request, 'SierraWeb/index.html')    
 
-def login(request):  #No esta funcionando el login, solo redirecciona al index
+def login(request):  #Ya verifica si el correo del usuario existe
     if request.method == 'POST':
         correo = request.POST['correo']
         password = request.POST['pass']
-        check_user = Usuarios.objects.get(correo=correo, password=password)
-        if check_user:
-            usuario = check_user.nombre_usuario 
-            request.session['user'] = usuario
-            return redirect('home')
+        if Usuarios.objects.filter(correo=correo).count() == 0:
+            return redirect('login')
         else:
-            return HttpResponse('Usuario no encontrado, porfavor ingrese un usuario existente')
+            check_user = Usuarios.objects.get(correo=correo, password=password)
+            if check_user:
+                usuario = check_user.nombre_usuario 
+                request.session['user'] = usuario
+                return redirect('home')
 
     return render(request, "SierraWeb/login.html")
 
