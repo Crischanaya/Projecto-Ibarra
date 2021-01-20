@@ -13,7 +13,7 @@ class PaquetesAdmin(admin.ModelAdmin):
     search_fields=("nombre", "lugar", "precio")
 
 class ComprasAdmin(admin.ModelAdmin):
-    list_display = ("nombre_usuario", "apellido_usuario","correo_cliente","paquete","status","total_de_compra")    
+    list_display = ("nombre_usuario", "apellido_usuario","correo_cliente","paquete","status","total_de_compra","n_personas","fecha_paquete")    
     search_fields =("nombre_usuario", "apellido_usuario")
 
 admin.site.register(Usuarios, UsuariosAdmin)
