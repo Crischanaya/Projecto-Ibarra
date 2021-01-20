@@ -5,6 +5,7 @@ from django.conf import settings
 from paypalcheckoutsdk.core import PayPalHttpClient, SandboxEnvironment
 from paypalcheckoutsdk.orders import OrdersGetRequest, OrdersCaptureRequest
 from SierraWeb.models import Usuarios, Paquetes, Compras
+from datetime import datetime
 import sys, json
 import re
 
@@ -165,7 +166,8 @@ def pago(request):
     for i in range(total_personas):
         total= (float(paquete.precio))*(i*.20)
         acum_total= total + float(paquete.precio)
-    
+    x = datetime.now()
+
     #print(acum_total)    
     #print(detalle_precio)
     #print(paquete.precio)
@@ -183,7 +185,7 @@ def pago(request):
             correo_cliente=transaccion.result.payer.email_address,
             paquete=Paquetes.objects.get(pk=paquete_id),
             n_personas=personas,
-            fecha_paquete=paquete.fecha,
+            fecha_paquete=x.strftime("%d/%m/%Y"),
             status=transaccion.result.status,
             codigo_estado=transaccion.status_code,
             total_de_compra=transaccion.result.purchase_units[0].payments.captures[0].amount.value
