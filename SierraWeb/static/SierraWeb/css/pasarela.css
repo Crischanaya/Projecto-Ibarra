@@ -362,11 +362,9 @@ footer {
   font-weight: 600;
 }
 .col-md-3 img{
-  max-width: 250px;
-   
+  max-width: 230px;
 }
 .col-md-3{
   margin-top: 1rem;
-  margin-right: 3rem;
+  margin-right: 3.3rem;
 }
-
