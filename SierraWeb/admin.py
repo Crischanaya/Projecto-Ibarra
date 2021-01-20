@@ -9,8 +9,8 @@ class UsuariosAdmin(admin.ModelAdmin):
     search_fields=("nombre_usuario","apellido")
 
 class PaquetesAdmin(admin.ModelAdmin):
-    list_display=("id_paquete", "nombre", "lugar", "precio","fecha")
-    search_fields=("nombre", "lugar", "precio","fecha")
+    list_display=("id_paquete", "nombre", "lugar", "precio")
+    search_fields=("nombre", "lugar", "precio")
 
 class ComprasAdmin(admin.ModelAdmin):
     list_display = ("nombre_usuario", "apellido_usuario","correo_cliente","paquete","status","total_de_compra")    

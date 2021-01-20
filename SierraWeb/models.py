@@ -20,7 +20,6 @@ class Paquetes(models.Model):
     nombre = models.TextField()
     lugar = models.TextField()
     precio = models.DecimalField(max_digits=10, decimal_places=0)
-    fecha =models.CharField(max_length=15,null = True)
 
     def nombrePaquetes(self):
         txt = "{0}  /  Lugar: {1}  /  Precio: {2} "
